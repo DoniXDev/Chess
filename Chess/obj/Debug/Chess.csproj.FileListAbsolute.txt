@@ -18,3 +18,6 @@ D:\Projects\Chess\Chess\obj\Debug\Chess.NameInput.resources
 D:\Projects\Chess\Chess\obj\Debug\Chess.Properties.Resources.resources
 D:\Projects\Chess\Chess\obj\Debug\Chess.csproj.GenerateResource.Cache
 D:\Projects\Chess\Chess\obj\Debug\Chess.Player.resources
+D:\Projects\_GitHub Projects\Chess\Chess\bin\Debug\Chess.exe.config
+D:\Projects\_GitHub Projects\Chess\Chess\obj\Debug\Chess.exe
+D:\Projects\_GitHub Projects\Chess\Chess\obj\Debug\Chess.pdb

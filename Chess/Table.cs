@@ -68,44 +68,32 @@ namespace Chess
     public class Gyalog : Unit
     {
         public Gyalog(int a, int b, Player c) : base(a, b, c) { id = 1; }
-        public bool EHJB = false;
-        public int id = 1;
     }
 
     public class Bastya : Unit
     {
         public Bastya(int a, int b, Player c) : base(a, b, c) { id = 2; }
-        public bool EHJB = true;
-        public int id;
 
     }
 
     public class Futo : Unit
     {
         public Futo(int a, int b, Player c) : base(a, b, c) { id = 3; }
-        public bool EHJB = true;
-        public int id;
     }
 
     public class Huszar : Unit
     {
         public Huszar(int a, int b, Player c) : base(a, b, c) { id = 4; }
-        public bool EHJB = true;
-        public int id;
     }
 
     public class KiralyN : Unit
     {
         public KiralyN(int a, int b, Player c) : base(a, b, c) { id = 5; }
-        public bool EHJB = true;
-        public int id;
     }
 
     public class Kiraly : Unit
     {
         public Kiraly(int a, int b, Player c) : base(a, b, c) { id = 6; }
-        public bool EHJB = true;
-        public int id ;
     }
 
     public class Table
