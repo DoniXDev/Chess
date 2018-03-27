@@ -13,15 +13,6 @@ using Chess;
 namespace Chess
 {
 
-    public class Player
-    {
-        public string Name;
-        public Player(string nam)
-        {
-            Name = nam;
-        }
-    }
-
     public delegate void UnitDestroly(Unit a);
     public delegate void SakkFor(Player a);
 
@@ -326,6 +317,11 @@ namespace Chess
                 Point(currentScreenPos.X - offset.X,
                 currentScreenPos.Y - offset.Y);
             }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

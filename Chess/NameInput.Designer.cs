@@ -29,45 +29,97 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.NameTextBox = new System.Windows.Forms.TextBox();
+            this.SubmitButton = new System.Windows.Forms.Button();
+            this.PassTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SwichButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(34, 124);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(176, 25);
+            this.label1.Size = new System.Drawing.Size(116, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Enter your name:";
+            this.label1.Text = "Username:";
             // 
-            // textBox1
+            // NameTextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(199, 10);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(224, 26);
-            this.textBox1.TabIndex = 1;
+            this.NameTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.NameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.NameTextBox.Location = new System.Drawing.Point(39, 152);
+            this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.Size = new System.Drawing.Size(221, 19);
+            this.NameTextBox.TabIndex = 1;
             // 
-            // button1
+            // SubmitButton
             // 
-            this.button1.Location = new System.Drawing.Point(439, 8);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 32);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Done";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.SubmitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SubmitButton.Location = new System.Drawing.Point(39, 253);
+            this.SubmitButton.Name = "SubmitButton";
+            this.SubmitButton.Size = new System.Drawing.Size(123, 32);
+            this.SubmitButton.TabIndex = 3;
+            this.SubmitButton.Text = "Login";
+            this.SubmitButton.UseVisualStyleBackColor = true;
+            this.SubmitButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // PassTextBox
+            // 
+            this.PassTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.PassTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PassTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.PassTextBox.Location = new System.Drawing.Point(39, 215);
+            this.PassTextBox.Name = "PassTextBox";
+            this.PassTextBox.Size = new System.Drawing.Size(221, 19);
+            this.PassTextBox.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(34, 189);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 25);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Password:";
+            // 
+            // SwichButton
+            // 
+            this.SwichButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SwichButton.Location = new System.Drawing.Point(168, 253);
+            this.SwichButton.Name = "SwichButton";
+            this.SwichButton.Size = new System.Drawing.Size(92, 32);
+            this.SwichButton.TabIndex = 5;
+            this.SwichButton.Text = "Register =>";
+            this.SwichButton.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(105, 56);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 32);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Chess";
             // 
             // NameInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(574, 48);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(300, 350);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.SwichButton);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.PassTextBox);
+            this.Controls.Add(this.SubmitButton);
+            this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -78,6 +130,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NameInput";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.NameInput_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -86,7 +139,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox NameTextBox;
+        private System.Windows.Forms.Button SubmitButton;
+        private System.Windows.Forms.TextBox PassTextBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button SwichButton;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -23,12 +23,17 @@ namespace Chess
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != "" && textBox1.Text.Length < 8 )
+            if (NameTextBox.Text != "" && NameTextBox.Text.Length < 18 )
             {
-                mainform.EnterPlayerName(textBox1.Text);
-                File.WriteAllText(@"ChessFigures\a.name", textBox1.Text);
+                mainform.EnterPlayerName(NameTextBox.Text);
+                File.WriteAllText(@"ChessFigures\a.name", NameTextBox.Text);
                 this.Close();
             }
+        }
+
+        private void NameInput_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
