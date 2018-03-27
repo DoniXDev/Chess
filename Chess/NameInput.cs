@@ -15,10 +15,10 @@ namespace Chess
 {
     public partial class NameInput : Form
     {
-        //http://localhost/login_client.php?";
+        //http://localhost/chess/login_client.php?
         //http://donixdev.esy.es/chess/login_client.php?
 
-        const string host = "http://localhost/login_client.php?";
+        const string host = "http://donixdev.esy.es/chess/login_client.php?";
         bool IsLogin = true;
         WebClient wc;
         MainForm mainform;
@@ -125,7 +125,9 @@ namespace Chess
             string requestString = host + "type=" + type.ToString() + "&un=" + username + "&pa= " + str;
             string requestWeb = "0";
 
-            try { requestWeb = wc.DownloadString(requestString); } catch (Exception) { }
+            try { requestWeb = wc.DownloadString(requestString);
+                MessageBox.Show(requestWeb);
+            } catch (Exception) { }
 
             return requestWeb == "1";
         }
