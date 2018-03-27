@@ -37,17 +37,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.ExitButton = new System.Windows.Forms.Button();
+            this.StatusLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label1.Location = new System.Drawing.Point(34, 99);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 25);
+            this.label1.Size = new System.Drawing.Size(110, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Username:";
+            this.label1.Text = "Username";
             // 
             // NameTextBox
             // 
@@ -62,7 +64,7 @@
             // SubmitButton
             // 
             this.SubmitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SubmitButton.Location = new System.Drawing.Point(39, 229);
+            this.SubmitButton.Location = new System.Drawing.Point(39, 237);
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(123, 32);
             this.SubmitButton.TabIndex = 3;
@@ -85,21 +87,23 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label2.Location = new System.Drawing.Point(34, 164);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 25);
+            this.label2.Size = new System.Drawing.Size(106, 25);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Password:";
+            this.label2.Text = "Password";
             // 
             // SwichButton
             // 
             this.SwichButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SwichButton.Location = new System.Drawing.Point(168, 229);
+            this.SwichButton.Location = new System.Drawing.Point(168, 237);
             this.SwichButton.Name = "SwichButton";
             this.SwichButton.Size = new System.Drawing.Size(92, 32);
             this.SwichButton.TabIndex = 5;
             this.SwichButton.Text = "Register =>";
             this.SwichButton.UseVisualStyleBackColor = true;
+            this.SwichButton.Click += new System.EventHandler(this.SwichButton_Click);
             // 
             // label3
             // 
@@ -126,7 +130,7 @@
             // 
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ExitButton.Location = new System.Drawing.Point(98, 267);
+            this.ExitButton.Location = new System.Drawing.Point(98, 275);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(97, 25);
             this.ExitButton.TabIndex = 11;
@@ -134,12 +138,24 @@
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
+            // StatusLabel
+            // 
+            this.StatusLabel.AutoSize = true;
+            this.StatusLabel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.StatusLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.StatusLabel.Location = new System.Drawing.Point(39, 216);
+            this.StatusLabel.Name = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(0, 14);
+            this.StatusLabel.TabIndex = 12;
+            this.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // NameInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(300, 350);
+            this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
@@ -175,5 +191,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Label StatusLabel;
     }
 }

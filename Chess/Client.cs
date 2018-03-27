@@ -17,7 +17,7 @@ namespace Chess
     {
         //http://localhost/chess.php?";
         //http://donixdev.esy.es/chess/server.php?
-        const string host = "http://donixdev.esy.es/chess/server.php?";
+        const string host = "http://localhost/chess.php?";
         public Player player;
         public WebClient wc;
 
@@ -52,7 +52,6 @@ namespace Chess
             output.Text += "|C| Successfull login! (" + player.Name + ")";
         }
 
-
         //  Queue func
         public bool JoinQueue()
         {
@@ -75,7 +74,7 @@ namespace Chess
             logged = true;
             MatchFinder.Start();
 
-            output.Text += "|C| In queue as | " + player.Name + " | ...";
+            output.Invoke((MethodInvoker)(() => output.Text += "|C| In queue as | " + player.Name + " | ..."));
             return true;
         }
 
