@@ -57,9 +57,6 @@ namespace Chess
 
             string a = "";
 
-            if (File.Exists(@"ChessFigures\a.name"))
-                a = File.ReadAllText(@"ChessFigures\a.name");
-
             if (a != "")
                 EnterPlayerName(a);
             else

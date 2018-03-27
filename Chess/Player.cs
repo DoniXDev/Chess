@@ -9,9 +9,12 @@ namespace Chess
     public class Player
     {
         public string Name;
+
         public Player(string nam)
         {
             Name = nam;
         }
     }
+
+
 }

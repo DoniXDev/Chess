@@ -49,6 +49,7 @@ namespace Chess
             MatchFinder = new Thread(FindQueue);
             MoveFinder = new Thread(GetOpponentMove);
 
+            output.Text += "|C| Successfull login! (" + player.Name + ")";
         }
 
 
