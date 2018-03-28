@@ -125,9 +125,7 @@ namespace Chess
             string requestString = host + "type=" + type.ToString() + "&un=" + username + "&pa= " + str;
             string requestWeb = "0";
 
-            try { requestWeb = wc.DownloadString(requestString);
-                MessageBox.Show(requestWeb);
-            } catch (Exception) { }
+            try { requestWeb = wc.DownloadString(requestString);} catch (Exception) { }
 
             return requestWeb == "1";
         }
