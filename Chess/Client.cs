@@ -157,7 +157,6 @@ namespace Chess
                         string[] startpos = movesplitted[0].Split(':');
                         string[] movepos = movesplitted[1].Split(':');
 
-
                         getplayermove.Invoke(int.Parse(startpos[0]), int.Parse(startpos[1]), new Move(int.Parse(movepos[0]), int.Parse(movepos[1])), turn);
                     }
                 }
@@ -190,7 +189,6 @@ namespace Chess
             else
                 return false;
         }
-
 
     }
 }

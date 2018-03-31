@@ -15,10 +15,10 @@ namespace Chess
 {
     public partial class NameInput : Form
     {
-        //http://localhost/chess/login_client.php?
-        //http://donixdev.esy.es/chess/login_client.php?
+        //http://localhost/chess/login_api.php?
+        //http://donixdev.esy.es/chess/login_api.php?
 
-        const string host = "http://donixdev.esy.es/chess/login_client.php?";
+        const string host = "http://donixdev.esy.es/chess/login_api.php?";
         bool IsLogin = true;
         WebClient wc;
         MainForm mainform;
@@ -133,15 +133,12 @@ namespace Chess
         //MD5
         private string CalculateMD5Hash(string input)
         {
-            MD5 md5 = System.Security.Cryptography.MD5.Create();
-            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-            byte[] hash = md5.ComputeHash(inputBytes);
-
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < hash.Length; i++)
-                sb.Append(hash[i].ToString("X2"));
-
-            return sb.ToString();
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] pass = Encoding.UTF8.GetBytes(input);
+                byte[] hash = md5.ComputeHash(pass);
+                return BitConverter.ToString(hash).Replace("-", "");
+            }
         }
 
     }
