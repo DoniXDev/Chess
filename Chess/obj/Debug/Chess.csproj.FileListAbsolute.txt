@@ -28,3 +28,4 @@ D:\Projects\_GitHub Projects\Chess\Chess\obj\Debug\Chess.NameInput.resources
 D:\Projects\_GitHub Projects\Chess\Chess\obj\Debug\Chess.Properties.Resources.resources
 D:\Projects\_GitHub Projects\Chess\Chess\obj\Debug\Chess.csproj.GenerateResource.Cache
 D:\Projects\_GitHub Projects\Chess\Chess\obj\Debug\Chess.MainForm.resources
+D:\Projects\_GitHub Projects\Chess\Chess\obj\Debug\Chess.GEndForm.resources

@@ -16,6 +16,7 @@ namespace Chess
     public delegate void UnitDestroly(Unit a);
     public delegate void SakkFor(Player a);
 
+
     public partial class MainForm : Form
     {
 
@@ -134,6 +135,9 @@ namespace Chess
         //Reset!
         public void Reset()
         {
+            GEndForm d = new GEndForm();
+            d.Show();
+
             table = null;
             kliens = new Client(PlayerOne, getplayermove, findmatch, richTextBox1, resetgame, this);
             richTextBox1.Invoke((MethodInvoker)(() => richTextBox1.Text += "--------------------------"));
@@ -220,9 +224,9 @@ namespace Chess
 
             //Create Game
             if(b == 1)
-                table = new Table(graphics, PlayerOne, a, richTextBox1, unitdestroly, sakkfor);
+                table = new Table(graphics, PlayerOne, a, richTextBox1, unitdestroly, sakkfor, resetgame);
             if (b == 2)
-                table = new Table(graphics, a, PlayerOne, richTextBox1, unitdestroly, sakkfor);
+                table = new Table(graphics, a, PlayerOne, richTextBox1, unitdestroly, sakkfor, resetgame);
 
             richTextBox1.Invoke((MethodInvoker)(() => richTextBox1.Text += "|C| Match found : | " + PlayerOne.Name + " | vs | " + a.Name +  " |"));
 

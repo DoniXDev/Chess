@@ -124,7 +124,7 @@
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label5.Size = new System.Drawing.Size(97, 12);
             this.label5.TabIndex = 10;
-            this.label5.Text = "by donix, version: 0.4";
+            this.label5.Text = "by donix, version: 1.0";
             // 
             // ExitButton
             // 

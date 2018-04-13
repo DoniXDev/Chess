@@ -103,6 +103,7 @@ namespace Chess
 
         //FFY
 
+        ResetGame resetgame;
         Graphics graphics;
         public int turn = 0;
         public int endgame = 2;
@@ -492,10 +493,11 @@ namespace Chess
             return true;
         }
 
-        public Table(Graphics a, Player b, Player c, RichTextBox d, UnitDestroly e, SakkFor f)
+        public Table(Graphics a, Player b, Player c, RichTextBox d, UnitDestroly e, SakkFor f, ResetGame g)
         {
             //Get Grap Create Recs
             output = d;
+            resetgame = g;
 
             graphics = a;
 
@@ -571,7 +573,7 @@ namespace Chess
                             turn = -1;
                             output.Invoke((MethodInvoker)(() => output.Text += "SAKKMATT for " + v.Name + Environment.NewLine));
                             output.Invoke((MethodInvoker)(() => output.Text += "Win for " + players.Find((u) => u != v).Name  + Environment.NewLine));
-                            kk = true;
+                            resetgame.Invoke();
                         }
                     }
                     else
