@@ -31,6 +31,7 @@ namespace Chess
         public UnitDestroly unitdestroly;
         public SakkFor sakkfor;
         public ResetGame resetgame;
+        public GEndForm endform;
         Client kliens;
 
         public FindMatch findmatch;
@@ -55,6 +56,7 @@ namespace Chess
             findmatch = MatchFound;
             getplayermove = OppMove;
             resetgame = Reset;
+            endform = new GEndForm(this);
 
             string a = "";
 
@@ -92,6 +94,8 @@ namespace Chess
             if(kliens.JoinQueue())
                 StartButton.Visible = false;
             //MatchFound(new Player("asd"), 1);
+
+            endform.Show();
 
         }
 
@@ -135,8 +139,14 @@ namespace Chess
         //Reset!
         public void Reset()
         {
-            GEndForm d = new GEndForm();
-            d.Show();
+            if (table.endgame != 2)
+            {
+                MessageBox.Show(kliens.GameEnd(table.players.Find((v) => v != table.players[table.endgame]), table.players[table.endgame]).ToString());
+                //
+                // Hiányzik //
+                //
+            }
+
 
             table = null;
             kliens = new Client(PlayerOne, getplayermove, findmatch, richTextBox1, resetgame, this);
@@ -241,14 +251,17 @@ namespace Chess
 
         public void OppMove(int x, int y, Move a, int b)
         {
-            if (table.turn != b)
-                return;
+            if (table != null)
+            {
+                if (table.turn != b)
+                    return;
 
-            int str = table.turn % 2;
-            int str2 = table.turn;
+                int str = table.turn % 2;
+                int str2 = table.turn;
 
-            try {table.Move(x, y, a, table.players[str]);}
-            catch (Exception) {table.turn = str2;}
+                try { table.Move(x, y, a, table.players[str]); }
+                catch (Exception) { if (table != null) table.turn = str2; }
+            }
         }
 
 

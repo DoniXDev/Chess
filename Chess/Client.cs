@@ -19,6 +19,7 @@ namespace Chess
         //http://donixdev.esy.es/chess/game_manager.php?
 
         const string host = "http://donixdev.esy.es/chess/game_manager.php?";
+        const string shost = "http://donixdev.esy.es/chess/statics_api.php?";
         public Player player;
         public WebClient wc;
 
@@ -188,6 +189,11 @@ namespace Chess
                 return true;
             else
                 return false;
+        }
+        public int GameEnd(Player p1, Player p2)
+        {
+            try{return int.Parse(wc.DownloadString(shost + "type=1&name=" + p1.Name + "&los=" + p2.Name));}
+            catch (Exception){ return 0;}
         }
 
     }

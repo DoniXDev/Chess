@@ -38,7 +38,7 @@
             // 
             this.WLLabel.AutoSize = true;
             this.WLLabel.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.WLLabel.Location = new System.Drawing.Point(81, 9);
+            this.WLLabel.Location = new System.Drawing.Point(52, 9);
             this.WLLabel.Name = "WLLabel";
             this.WLLabel.Size = new System.Drawing.Size(87, 40);
             this.WLLabel.TabIndex = 0;
@@ -48,18 +48,19 @@
             // 
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ExitButton.Location = new System.Drawing.Point(100, 100);
+            this.ExitButton.Location = new System.Drawing.Point(71, 100);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(100, 27);
             this.ExitButton.TabIndex = 3;
             this.ExitButton.Text = "Play again";
             this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // LPLabel
             // 
             this.LPLabel.AutoSize = true;
             this.LPLabel.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.LPLabel.Location = new System.Drawing.Point(179, 11);
+            this.LPLabel.Location = new System.Drawing.Point(150, 11);
             this.LPLabel.Name = "LPLabel";
             this.LPLabel.Size = new System.Drawing.Size(58, 24);
             this.LPLabel.TabIndex = 4;
@@ -68,10 +69,10 @@
             // GoldLabel
             // 
             this.GoldLabel.AutoSize = true;
-            this.GoldLabel.BackColor = System.Drawing.Color.AliceBlue;
+            this.GoldLabel.BackColor = System.Drawing.Color.White;
             this.GoldLabel.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.GoldLabel.ForeColor = System.Drawing.Color.Gold;
-            this.GoldLabel.Location = new System.Drawing.Point(104, 61);
+            this.GoldLabel.Location = new System.Drawing.Point(75, 61);
             this.GoldLabel.Name = "GoldLabel";
             this.GoldLabel.Size = new System.Drawing.Size(96, 24);
             this.GoldLabel.TabIndex = 5;
@@ -81,8 +82,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(300, 150);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(250, 135);
             this.ControlBox = false;
             this.Controls.Add(this.GoldLabel);
             this.Controls.Add(this.LPLabel);
@@ -96,6 +97,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.GEndForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
