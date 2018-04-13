@@ -38,7 +38,7 @@
             // 
             this.WLLabel.AutoSize = true;
             this.WLLabel.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.WLLabel.Location = new System.Drawing.Point(52, 9);
+            this.WLLabel.Location = new System.Drawing.Point(66, 9);
             this.WLLabel.Name = "WLLabel";
             this.WLLabel.Size = new System.Drawing.Size(87, 40);
             this.WLLabel.TabIndex = 0;
@@ -60,7 +60,7 @@
             // 
             this.LPLabel.AutoSize = true;
             this.LPLabel.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.LPLabel.Location = new System.Drawing.Point(150, 11);
+            this.LPLabel.Location = new System.Drawing.Point(146, 7);
             this.LPLabel.Name = "LPLabel";
             this.LPLabel.Size = new System.Drawing.Size(58, 24);
             this.LPLabel.TabIndex = 4;
@@ -74,9 +74,9 @@
             this.GoldLabel.ForeColor = System.Drawing.Color.Gold;
             this.GoldLabel.Location = new System.Drawing.Point(75, 61);
             this.GoldLabel.Name = "GoldLabel";
-            this.GoldLabel.Size = new System.Drawing.Size(96, 24);
+            this.GoldLabel.Size = new System.Drawing.Size(90, 24);
             this.GoldLabel.TabIndex = 5;
-            this.GoldLabel.Text = "+ 10 gold";
+            this.GoldLabel.Text = "+10 gold";
             // 
             // GEndForm
             // 

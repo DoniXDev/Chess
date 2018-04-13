@@ -141,5 +141,10 @@ namespace Chess
             }
         }
 
+        private void PassTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+                SubmitButton.PerformClick();
+        }
     }
 }

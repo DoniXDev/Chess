@@ -50,8 +50,6 @@ namespace Chess
 
             MatchFinder = new Thread(FindQueue);
             MoveFinder = new Thread(GetOpponentMove);
-
-            output.Invoke((MethodInvoker)(() => output.Text += "|C| Successfull login! (" + player.Name + ")"));
         }
 
         //  Queue func

@@ -57,6 +57,7 @@ namespace Chess
             getplayermove = OppMove;
             resetgame = Reset;
             endform = new GEndForm(this);
+            
 
             string a = "";
 
@@ -85,6 +86,7 @@ namespace Chess
         {
             kliens.Dodge();
             kliens.LeaveQueue();
+            endform.Close();
             Close();
         }
 
@@ -94,9 +96,6 @@ namespace Chess
             if(kliens.JoinQueue())
                 StartButton.Visible = false;
             //MatchFound(new Player("asd"), 1);
-
-            endform.Show();
-
         }
 
         int x;
@@ -139,15 +138,20 @@ namespace Chess
         //Reset!
         public void Reset()
         {
+            //Game win/lose || dodge not
             if (table.endgame != 2)
             {
-                MessageBox.Show(kliens.GameEnd(table.players.Find((v) => v != table.players[table.endgame]), table.players[table.endgame]).ToString());
-                //
-                // Hiányzik //
-                //
+                if (table.players.Find((v) => v != table.players[table.endgame]) == PlayerOne)
+                {
+                    int val = kliens.GameEnd(PlayerOne, table.players[table.endgame]);
+                    endform.Win(val);
+                }
+                else
+                    endform.Lose();
             }
-
-
+            
+            
+            //Reset
             table = null;
             kliens = new Client(PlayerOne, getplayermove, findmatch, richTextBox1, resetgame, this);
             richTextBox1.Invoke((MethodInvoker)(() => richTextBox1.Text += "--------------------------"));
