@@ -52,7 +52,7 @@
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(100, 27);
             this.ExitButton.TabIndex = 3;
-            this.ExitButton.Text = "Play again";
+            this.ExitButton.Text = "Return";
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
@@ -95,7 +95,7 @@
             this.Name = "GEndForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.TopMost = true;
             this.Load += new System.EventHandler(this.GEndForm_Load);
             this.ResumeLayout(false);

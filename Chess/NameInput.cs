@@ -64,8 +64,10 @@ namespace Chess
                             this.Close();
                         }
                         else
+                        {
+                            PassTextBox.Clear();
                             StatusLabel.Text = "Hibás felhasználói adatok!";
-
+                        }
                     }
                 }
                 else
@@ -145,6 +147,11 @@ namespace Chess
         {
             if (e.KeyValue == 13)
                 SubmitButton.PerformClick();
+        }
+
+        private void PassTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
