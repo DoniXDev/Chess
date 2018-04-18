@@ -124,15 +124,16 @@
             this.label5.Location = new System.Drawing.Point(94, 61);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label5.Size = new System.Drawing.Size(97, 12);
+            this.label5.Size = new System.Drawing.Size(84, 12);
             this.label5.TabIndex = 10;
-            this.label5.Text = "by donix, version: 1.0";
+            this.label5.Text = "by donix, version: ";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // ExitButton
             // 
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ExitButton.Location = new System.Drawing.Point(98, 279);
+            this.ExitButton.Location = new System.Drawing.Point(100, 275);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(97, 25);
             this.ExitButton.TabIndex = 11;

@@ -38,6 +38,7 @@ namespace Chess
         //WIN
         public void Win(int a)
         {
+            mainform.Invoke((MethodInvoker)(() => WLLabel.ForeColor = Color.DarkGreen));
             mainform.Invoke((MethodInvoker)(() => WLLabel.Text = "WIN"));
             mainform.Invoke((MethodInvoker)(() => LPLabel.Text = "|+" + a.ToString() + "|"));
             mainform.Invoke((MethodInvoker)(() => GoldLabel.Text = "+50 gold"));
@@ -48,6 +49,7 @@ namespace Chess
         //LOSE
         public void Lose()
         {
+            mainform.Invoke((MethodInvoker)(() => WLLabel.ForeColor = Color.Maroon));
             mainform.Invoke((MethodInvoker)(() => WLLabel.Text = "LOSE"));
             mainform.Invoke((MethodInvoker)(() => LPLabel.Text = ""));
             mainform.Invoke((MethodInvoker)(() => GoldLabel.Text = "+10 gold"));
@@ -59,6 +61,11 @@ namespace Chess
         private void GEndForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://donixdev.esy.es/chess/index.php?page=profile&name=" + mainform.PlayerOne.Name);
         }
     }
 }

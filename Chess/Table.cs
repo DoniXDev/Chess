@@ -462,7 +462,7 @@ namespace Chess
             //Clearup
             for (int x = 0; x < 8; x++)
                 for (int y = 0; y < 8; y++)
-                        graphics.FillRectangle((x%2 == ((y%2 == 0) ? 1: 0)) ? Brushes.Gray : Brushes.White, new Rectangle((x * 26) + 1, (y * 26) + 1, 25, 25));
+                        graphics.FillRectangle((x%2 == ((y%2 == 0) ? 1: 0)) ? Brushes.LightGray : Brushes.Snow, new Rectangle((x * 26) + 1, (y * 26) + 1, 25, 25));
             
             //Set
             foreach (Unit u in units)

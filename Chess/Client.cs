@@ -15,11 +15,12 @@ namespace Chess
 
     class Client
     {
-        //http://localhost/chess/game_manager.php?";
-        //http://donixdev.esy.es/chess/game_manager.php?
+        //http://localhost/chess
+        //http://donixdev.esy.es
 
-        const string host = "http://donixdev.esy.es/chess/game_manager.php?";
-        const string shost = "http://donixdev.esy.es/chess/statics_api.php?";
+        const string server = "http://donixdev.esy.es";
+        const string host = server + "/chess/game_manager.php?";
+        const string shost = server +  "/chess/statics_api.php?";
         public Player player;
         public WebClient wc;
 
@@ -52,7 +53,7 @@ namespace Chess
             MoveFinder = new Thread(GetOpponentMove);
         }
 
-        //  Queue func
+        //Queue func
         public bool JoinQueue()
         {
             string jointxt = "type=0&name=" + player.Name;
@@ -77,7 +78,6 @@ namespace Chess
             output.Invoke((MethodInvoker)(() => output.Text += "|C| In queue as | " + player.Name + " | ..."));
             return true;
         }
-
         void FindQueue() //REF
         {
             WebClient a = new WebClient();
@@ -85,7 +85,9 @@ namespace Chess
 
             while (true)
             {
-                string str = a.DownloadString(host + jointxt);
+                string str = "v";
+                try { str = wc.DownloadString(host + jointxt); } catch (Exception) { };
+
                 if (str != "v")
                 {
                     int id = int.Parse(str);
@@ -97,13 +99,12 @@ namespace Chess
                 Thread.Sleep(100); 
             }
         }
-
         public void LeaveQueue()
         {
             string jointxt = "type=1&name=" + player.Name;
 
             if(logged)
-                wc.DownloadString(host + jointxt);
+                try{wc.DownloadString(host + jointxt);}catch (Exception){};
 
             if (MatchFinder.IsAlive)
                 MatchFinder.Abort();
@@ -113,9 +114,8 @@ namespace Chess
         }
 
 
-        //  Match func
-
-        //Downlaod Move
+        //Match func
+        //Downlaod Move from db
         void GetOpponentMove() //REF
         {
             WebClient a = new WebClient();
@@ -123,7 +123,8 @@ namespace Chess
 
             while (true)
             {
-                string str = a.DownloadString(host + gettxt);
+                string str = "?";
+                try { str = wc.DownloadString(host + gettxt);} catch (Exception){};
 
                 if (str == "?")
                 {
@@ -163,7 +164,7 @@ namespace Chess
             }
         }
 
-        //Upload Move
+        //Upload Move & Dodge & GameEND to db
         public void Dodge()
         {
             if(mainform.table != null)
@@ -172,7 +173,7 @@ namespace Chess
 
             string jointxt = "type=4&name=" + player.Name + "&turn=" + "-1" + "&move=" + "DODGE" + "&id=" + lobby;
             if (logged)
-                wc.DownloadString(host + jointxt);
+                try { wc.DownloadString(host + jointxt); } catch (Exception) { };
 
         }
         public bool Move(int x, int y, Move a, int t)
@@ -193,6 +194,7 @@ namespace Chess
             try{return int.Parse(wc.DownloadString(shost + "type=1&name=" + p1.Name + "&los=" + p2.Name));}
             catch (Exception){ return 0;}
         }
+        //
 
     }
 }

@@ -76,9 +76,10 @@
             // 
             this.Screen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Screen.Controls.Add(this.label2);
-            this.Screen.Location = new System.Drawing.Point(26, 85);
+            this.Screen.Font = new System.Drawing.Font("MS Outlook", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.Screen.Location = new System.Drawing.Point(27, 92);
             this.Screen.Name = "Screen";
-            this.Screen.Size = new System.Drawing.Size(216, 216);
+            this.Screen.Size = new System.Drawing.Size(211, 211);
             this.Screen.TabIndex = 0;
             this.Screen.Paint += new System.Windows.Forms.PaintEventHandler(this.Screen_Paint);
             this.Screen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Screen_MouseClick);
@@ -106,7 +107,7 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.richTextBox1.Size = new System.Drawing.Size(229, 336);
+            this.richTextBox1.Size = new System.Drawing.Size(229, 334);
             this.richTextBox1.TabIndex = 5;
             this.richTextBox1.TabStop = false;
             this.richTextBox1.Text = "";
@@ -115,22 +116,22 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 8.5F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(28, 303);
+            this.label1.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(34, 305);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(215, 15);
+            this.label1.Size = new System.Drawing.Size(204, 11);
             this.label1.TabIndex = 6;
             this.label1.Text = "A       B      C       D      E       F       G       H  ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.5F);
-            this.label3.Location = new System.Drawing.Point(10, 88);
+            this.label3.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(11, 99);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label3.Size = new System.Drawing.Size(14, 210);
+            this.label3.Size = new System.Drawing.Size(13, 195);
             this.label3.TabIndex = 7;
             this.label3.Text = "1\r\n\r\n2\r\n\r\n3\r\n\r\n4\r\n\r\n5\r\n\r\n6\r\n\r\n7\r\n\r\n8";
             // 
@@ -152,9 +153,9 @@
             this.label5.Location = new System.Drawing.Point(266, 39);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label5.Size = new System.Drawing.Size(97, 12);
+            this.label5.Size = new System.Drawing.Size(84, 12);
             this.label5.TabIndex = 9;
-            this.label5.Text = "by donix, version: 1.0";
+            this.label5.Text = "by donix, version: ";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
@@ -172,7 +173,7 @@
             // 
             this.PlayerOneSakkL.AutoSize = true;
             this.PlayerOneSakkL.Font = new System.Drawing.Font("Arial Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.PlayerOneSakkL.Location = new System.Drawing.Point(322, 145);
+            this.PlayerOneSakkL.Location = new System.Drawing.Point(323, 152);
             this.PlayerOneSakkL.Name = "PlayerOneSakkL";
             this.PlayerOneSakkL.Size = new System.Drawing.Size(64, 22);
             this.PlayerOneSakkL.TabIndex = 11;
@@ -184,7 +185,7 @@
             this.PlayerOneNameL.AutoSize = true;
             this.PlayerOneNameL.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.PlayerOneNameL.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.PlayerOneNameL.Location = new System.Drawing.Point(258, 88);
+            this.PlayerOneNameL.Location = new System.Drawing.Point(259, 95);
             this.PlayerOneNameL.Name = "PlayerOneNameL";
             this.PlayerOneNameL.Size = new System.Drawing.Size(72, 22);
             this.PlayerOneNameL.TabIndex = 12;
@@ -194,14 +195,14 @@
             // 
             // PlayerOneUnitsP
             // 
-            this.PlayerOneUnitsP.Location = new System.Drawing.Point(259, 116);
+            this.PlayerOneUnitsP.Location = new System.Drawing.Point(260, 123);
             this.PlayerOneUnitsP.Name = "PlayerOneUnitsP";
             this.PlayerOneUnitsP.Size = new System.Drawing.Size(131, 27);
             this.PlayerOneUnitsP.TabIndex = 13;
             // 
             // PlayerTwoUnitsP
             // 
-            this.PlayerTwoUnitsP.Location = new System.Drawing.Point(259, 253);
+            this.PlayerTwoUnitsP.Location = new System.Drawing.Point(260, 260);
             this.PlayerTwoUnitsP.Name = "PlayerTwoUnitsP";
             this.PlayerTwoUnitsP.Size = new System.Drawing.Size(131, 27);
             this.PlayerTwoUnitsP.TabIndex = 16;
@@ -211,7 +212,7 @@
             this.PlayerTwoNameL.AutoSize = true;
             this.PlayerTwoNameL.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.PlayerTwoNameL.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.PlayerTwoNameL.Location = new System.Drawing.Point(257, 226);
+            this.PlayerTwoNameL.Location = new System.Drawing.Point(258, 233);
             this.PlayerTwoNameL.Name = "PlayerTwoNameL";
             this.PlayerTwoNameL.Size = new System.Drawing.Size(72, 22);
             this.PlayerTwoNameL.TabIndex = 15;
@@ -223,7 +224,7 @@
             // 
             this.PlayerTwoSakkL.AutoSize = true;
             this.PlayerTwoSakkL.Font = new System.Drawing.Font("Arial Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.PlayerTwoSakkL.Location = new System.Drawing.Point(325, 282);
+            this.PlayerTwoSakkL.Location = new System.Drawing.Point(326, 289);
             this.PlayerTwoSakkL.Name = "PlayerTwoSakkL";
             this.PlayerTwoSakkL.Size = new System.Drawing.Size(64, 22);
             this.PlayerTwoSakkL.TabIndex = 14;
@@ -234,7 +235,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(253, 186);
+            this.label7.Location = new System.Drawing.Point(254, 193);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label7.Size = new System.Drawing.Size(145, 12);

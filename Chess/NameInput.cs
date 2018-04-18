@@ -38,7 +38,7 @@ namespace Chess
         //Login/Reg Butt
         private void button1_Click(object sender, EventArgs e)
         {
-            if (NameTextBox.Text != "" && NameTextBox.Text.Length < 18)
+            if (NameTextBox.Text != "" && NameTextBox.Text.Length < 18 && NameTextBox.Text.Length > 3)
             {
                 if (PassTextBox.Text != "")
                 {
@@ -82,6 +82,7 @@ namespace Chess
         //Load
         private void NameInput_Load(object sender, EventArgs e)
         {
+            label5.Text += MainForm.version;
             string a = "";
             if (File.Exists(@"ChessFigures\a.name"))
                 a = File.ReadAllText(@"ChessFigures\a.name");
@@ -150,6 +151,11 @@ namespace Chess
         }
 
         private void PassTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }

@@ -25,6 +25,7 @@ namespace Chess
             InitializeComponent();
         }
 
+        public const string version = "1.1";
         public Graphics graphics;
         public Table table;
         public NameInput nameinput;
@@ -57,8 +58,8 @@ namespace Chess
             getplayermove = OppMove;
             resetgame = Reset;
             endform = new GEndForm(this);
-            
 
+            label5.Text += version;
             string a = "";
 
             if (a != "")
@@ -93,7 +94,7 @@ namespace Chess
         //START BUTTON
         private void StartButton_Click(object sender, EventArgs e)
         {
-            if(kliens.JoinQueue())
+            if (kliens.JoinQueue())
                 StartButton.Visible = false;
             //MatchFound(new Player("asd"), 1);
         }
@@ -298,8 +299,8 @@ namespace Chess
         {
             List<string> a = new List<string>(richTextBox1.Lines);
 
-            if (a.Count > 16)
-                for (int i = 0; i < a.Count - 27; i++)
+            if (a.Count > 22)
+                for (int i = 0; i < a.Count - 25; i++)
                     a[0] = "";
 
             richTextBox1.Text = "";
