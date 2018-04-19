@@ -15,10 +15,13 @@ namespace Chess
 
     class Client
     {
+        //Developement tools / Server swich
         //http://localhost/chess
         //http://donixdev.esy.es
 
         const string server = "http://donixdev.esy.es";
+        //
+
         public const string host = server + "/chess/game_manager.php?";
         public const string shost = server +  "/chess/statics_api.php?";
         public Player player;
@@ -86,7 +89,7 @@ namespace Chess
             while (true)
             {
                 string str = "v";
-                try { str = wc.DownloadString(host + jointxt); } catch (Exception) { };
+                try { str = a.DownloadString(host + jointxt); } catch (Exception) { };
 
                 if (str != "v")
                 {
@@ -124,11 +127,11 @@ namespace Chess
             while (true)
             {
                 string str = "?";
-                try { str = wc.DownloadString(host + gettxt);} catch (Exception){};
+                try { str = a.DownloadString(host + gettxt);} catch (Exception){};
 
                 if (str == "?")
                 {
-                    output.Text += "Error from server!" + Environment.NewLine;
+                    output.Text += "!!! Error from server, game canceled. Exit !!!" + Environment.NewLine;
                     return;
                 }
 

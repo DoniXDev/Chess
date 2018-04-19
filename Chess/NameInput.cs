@@ -89,7 +89,7 @@ namespace Chess
             NameTextBox.Text = a;
 
             //Is up to date
-            if (IsNewVersion())
+            if (IsNewVersion()&& !MainForm.IsDev)
                 BlockLogin();
 
         }

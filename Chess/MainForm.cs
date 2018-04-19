@@ -12,20 +12,22 @@ using Chess;
 
 namespace Chess
 {
-
     public delegate void UnitDestroly(Unit a);
     public delegate void SakkFor(Player a);
 
 
     public partial class MainForm : Form
     {
+        //Developement tools
+        public const string version = "1.1.1";
+        public const bool IsDev = false;
+        //
 
         public MainForm()
         {
             InitializeComponent();
         }
 
-        public const string version = "1.1";
         public Graphics graphics;
         public Table table;
         public NameInput nameinput;
