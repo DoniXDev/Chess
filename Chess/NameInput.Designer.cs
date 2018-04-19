@@ -38,6 +38,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.ExitButton = new System.Windows.Forms.Button();
             this.StatusLabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -152,12 +153,28 @@
             this.StatusLabel.TabIndex = 12;
             this.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(49, 136);
+            this.label4.Name = "label4";
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label4.Size = new System.Drawing.Size(202, 54);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Your version is up to date!\r\n   Click here to download \r\nthe lastest version of C" +
+    "hess.\r\n";
+            this.label4.Visible = false;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
             // NameInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(300, 350);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.label5);
@@ -195,5 +212,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Label StatusLabel;
+        private System.Windows.Forms.Label label4;
     }
 }

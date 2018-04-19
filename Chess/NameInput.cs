@@ -87,6 +87,11 @@ namespace Chess
             if (File.Exists(@"ChessFigures\a.name"))
                 a = File.ReadAllText(@"ChessFigures\a.name");
             NameTextBox.Text = a;
+
+            //Is up to date
+            if (IsNewVersion())
+                BlockLogin();
+
         }
 
         //Switch
@@ -112,6 +117,38 @@ namespace Chess
 
         //
         //Sub Funcs
+        //
+
+
+        //Update FUNCT
+        //Update button
+        private void label4_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://donixdev.esy.es/chess/index.php");
+            ExitButton.PerformClick();
+        }
+        public void BlockLogin()
+        {
+            SubmitButton.Enabled = false;
+            SwichButton.Enabled = false;
+
+            label1.Visible = false;
+            label2.Visible = false;
+            NameTextBox.Visible = false;
+            PassTextBox.Visible = false;
+
+            label4.Visible = true;
+        }
+        public bool IsNewVersion()
+        {
+            string str = "";
+
+            try{ str = wc.DownloadString(Client.shost + "type=2"); }
+            catch (Exception){ return true; }
+            if (str != MainForm.version)
+                return true;
+            return false;
+        }
         //
 
         //Exit

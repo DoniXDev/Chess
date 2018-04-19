@@ -19,8 +19,8 @@ namespace Chess
         //http://donixdev.esy.es
 
         const string server = "http://donixdev.esy.es";
-        const string host = server + "/chess/game_manager.php?";
-        const string shost = server +  "/chess/statics_api.php?";
+        public const string host = server + "/chess/game_manager.php?";
+        public const string shost = server +  "/chess/statics_api.php?";
         public Player player;
         public WebClient wc;
 
