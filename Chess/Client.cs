@@ -15,15 +15,8 @@ namespace Chess
 
     class Client
     {
-        //Developement tools / Server swich
-        //http://localhost/chess
-        //http://donixdev.esy.es
-
-        const string server = "http://donixdev.esy.es";
-        //
-
-        public const string host = server + "/chess/game_manager.php?";
-        public const string shost = server +  "/chess/statics_api.php?";
+        public const string host = MainForm.server + "/chess/game_manager.php?";
+        public const string shost = MainForm.server +  "/chess/statics_api.php?";
         public Player player;
         public WebClient wc;
 

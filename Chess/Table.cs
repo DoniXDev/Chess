@@ -466,11 +466,9 @@ namespace Chess
             
             //Set
             foreach (Unit u in units)
-           {
                      if(GetIDByUnit(u) != 0)
                           graphics.DrawImage(GetImageByUnit(u), (u.x * 26) + 1, (u.y * 26) + 1);
-            }
-
+           
             //LastMove
             if(lastmove.end != null)
                 LastMoveIndicator(lastmove.x, lastmove.y, lastmove.end);
@@ -552,7 +550,8 @@ namespace Chess
                 units.Remove(SI);
                 units.Add(new Unit(srt1, srt2));
 
-                output.Invoke((MethodInvoker)(() => output.Text += "T:"+ turn + " [" + c.Name + "] (" + x + ":" + y + ") => (" + (x+b.ChangeX).ToString() + ":" + (y+b.ChangeY).ToString() + ") with: " + selected.GetType().ToString().Split('.')[1]   +  Environment.NewLine));
+                List<string> o = new List<string> {"A","B","C","D","E","F","G","H"};
+                output.Invoke((MethodInvoker)(() => output.Text += "T:"+ turn + " [" + c.Name + "] " + o[x] + (y+1).ToString() + " => " + (o[x +b.ChangeX]).ToString() + (y+b.ChangeY+1).ToString() + " with: " + selected.GetType().ToString().Split('.')[1]   +  Environment.NewLine));
 
                 //Sakk / Matt
                 bool kk = false;

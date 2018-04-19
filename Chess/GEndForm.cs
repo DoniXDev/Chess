@@ -20,13 +20,15 @@ namespace Chess
             mainform = a;
         }
 
+        //Close
         private void ExitButton_Click(object sender, EventArgs e)
         {
+            mainform.Invoke((MethodInvoker)(() => this.Enabled = false));
             Close();
         }
 
         //SETPOSITION
-        void SetPosition()
+        public void SetPosition()
         {
             Point p = new Point();
             p.X = mainform.Location.X + (300 - 250 / 2);
@@ -43,6 +45,7 @@ namespace Chess
             mainform.Invoke((MethodInvoker)(() => LPLabel.Text = "|+" + a.ToString() + "|"));
             mainform.Invoke((MethodInvoker)(() => GoldLabel.Text = "+50 gold"));
             mainform.Invoke((MethodInvoker)(() => SetPosition()));
+            mainform.Invoke((MethodInvoker)(() => this.Enabled = true));
             mainform.Invoke((MethodInvoker)(() => this.Show()));
         }
 
@@ -54,6 +57,7 @@ namespace Chess
             mainform.Invoke((MethodInvoker)(() => LPLabel.Text = ""));
             mainform.Invoke((MethodInvoker)(() => GoldLabel.Text = "+10 gold"));
             mainform.Invoke((MethodInvoker)(() => SetPosition()));
+            mainform.Invoke((MethodInvoker)(() => this.Enabled = true));
             mainform.Invoke((MethodInvoker)(() => this.Show()));
         }
 

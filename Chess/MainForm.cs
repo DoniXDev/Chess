@@ -15,12 +15,25 @@ namespace Chess
     public delegate void UnitDestroly(Unit a);
     public delegate void SakkFor(Player a);
 
+    //TODO
+
+    // Profile adatok
+    // Endgame sreen follow mainform
+
+    //ONCE
+    // Erőforrásoakt letültő rendszer letöltő rendszer
+
+    //
+
 
     public partial class MainForm : Form
     {
         //Developement tools
-        public const string version = "1.1.1";
-        public const bool IsDev = false;
+            // ||  http://localhost/chess  ||  http://donixdev.esy.es || //
+
+        public const string version = "1.1.2";
+        public const bool IsDev = true;
+        public const string server = "http://donixdev.esy.es";
         //
 
         public MainForm()
@@ -98,7 +111,6 @@ namespace Chess
         {
             if (kliens.JoinQueue())
                 StartButton.Visible = false;
-            //MatchFound(new Player("asd"), 1);
         }
 
         int x;
@@ -334,9 +346,11 @@ namespace Chess
             if (dragging)
             {
                 Point currentScreenPos = PointToScreen(e.Location);
-                Location = new
-                Point(currentScreenPos.X - offset.X,
-                currentScreenPos.Y - offset.Y);
+                Location = new Point(currentScreenPos.X - offset.X,currentScreenPos.Y - offset.Y);
+
+                //if (endform.Enabled == true)
+                //    endform.SetPosition();
+                
             }
         }
 
