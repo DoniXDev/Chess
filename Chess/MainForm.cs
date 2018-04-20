@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using Chess;
+using System.Threading;
+using System.Net;
 
 namespace Chess
 {
@@ -17,8 +19,7 @@ namespace Chess
 
     //TODO
 
-    // Profile adatok
-    // Endgame sreen follow mainform
+    // 1.2
 
     //ONCE
     // Erőforrásoakt letültő rendszer letöltő rendszer
@@ -31,8 +32,8 @@ namespace Chess
         //Developement tools
             // ||  http://localhost/chess  ||  http://donixdev.esy.es || //
 
-        public const string version = "1.1.2";
-        public const bool IsDev = true;
+        public const string version = "1.2";
+        public const bool IsDev = false;
         public const string server = "http://donixdev.esy.es";
         //
 
@@ -155,7 +156,6 @@ namespace Chess
         {
             //Game win/lose || dodge not
             if (table.endgame != 2)
-            {
                 if (table.players.Find((v) => v != table.players[table.endgame]) == PlayerOne)
                 {
                     int val = kliens.GameEnd(PlayerOne, table.players[table.endgame]);
@@ -163,19 +163,24 @@ namespace Chess
                 }
                 else
                     endform.Lose();
-            }
             
-            
-            //Reset
+
+            //Reset: Game
             table = null;
             kliens = new Client(PlayerOne, getplayermove, findmatch, richTextBox1, resetgame, this);
             richTextBox1.Invoke((MethodInvoker)(() => richTextBox1.Text += "--------------------------"));
             StartButton.Invoke((MethodInvoker)(() => StartButton.Visible = true));
+            //Reset: Sakk label
             PlayerOneSakkL.Invoke((MethodInvoker)(() => PlayerOneSakkL.Visible = false));
             PlayerTwoSakkL.Invoke((MethodInvoker)(() => PlayerTwoSakkL.Visible = false));
-
+            //Reset: Name label
             PlayerOneNameL.Invoke((MethodInvoker)(() => PlayerOneNameL.Visible = false));
             PlayerTwoNameL.Invoke((MethodInvoker)(() => PlayerTwoNameL.Visible = false));
+            //SetuUp: ELO label
+            PlayerOneELOLabel.Invoke((MethodInvoker)(() => PlayerOneELOLabel.Visible = false));
+            PlayerTwoELOLabel.Invoke((MethodInvoker)(() => PlayerTwoELOLabel.Visible = false));
+            PlayerOneELORankLabel.Invoke((MethodInvoker)(() => PlayerOneELORankLabel.Visible = false));
+            PlayerTwoELORankLabel.Invoke((MethodInvoker)(() => PlayerTwoELORankLabel.Visible = false));
 
             Graphics[] c = { PTUPG, POUPG };
             graphics.FillRectangle(Brushes.WhiteSmoke, 0, 0, 216, 216);
@@ -189,20 +194,56 @@ namespace Chess
         //Write out player names
         void SetUpPlayerNamesAndTable()
         {
-            //SetUp: Name
+            //SetUp: Name label
             PlayerOneNameL.Invoke((MethodInvoker)(() => PlayerOneNameL.Visible = true));
             PlayerTwoNameL.Invoke((MethodInvoker)(() => PlayerTwoNameL.Visible = true));
-
+            //SetuUp: ELO label
+            PlayerOneELOLabel.Invoke((MethodInvoker)(() => PlayerOneELOLabel.Visible = true));
+            PlayerTwoELOLabel.Invoke((MethodInvoker)(() => PlayerTwoELOLabel.Visible = true));
+            PlayerOneELORankLabel.Invoke((MethodInvoker)(() => PlayerOneELORankLabel.Visible = true));
+            PlayerTwoELORankLabel.Invoke((MethodInvoker)(() => PlayerTwoELORankLabel.Visible = true));
+            //SetUp: Name 
             PlayerOneNameL.Invoke((MethodInvoker)(() => PlayerOneNameL.Text = "[ " + table.players[0].Name + " ]"));
             PlayerTwoNameL.Invoke((MethodInvoker)(() => PlayerTwoNameL.Text = "[ " + table.players[1].Name + " ]"));
-
+            //SetuUp: ELO
+            Thread a = new Thread(SetUpPlayerDatas);
+            a.Start();
             //SetUp: Table
-           POUPG = PlayerOneUnitsP.CreateGraphics();
-           PTUPG = PlayerTwoUnitsP.CreateGraphics();
-           Graphics[] c = {PTUPG, POUPG};
+            POUPG = PlayerOneUnitsP.CreateGraphics();
+            PTUPG = PlayerTwoUnitsP.CreateGraphics();
+            Graphics[] c = {PTUPG, POUPG};
 
             foreach (Graphics u in c)
                 u.DrawRectangle(Pens.Black, 0, 0, 130, 26);
+        }
+
+        //DownlaodPlayerDatas
+        void SetUpPlayerDatas()
+        {
+            //Get mmr data
+            WebClient a = new WebClient();
+            string[] str = new string[2];
+            for (int i = 0; i < 2; i++)
+                try {str[i] = a.DownloadString(Client.shost + "type=0&name=" + table.players[i].Name); } catch (Exception) { return; }
+           
+            //Setlabels
+            PlayerOneELOLabel.Invoke((MethodInvoker)(() => PlayerOneELOLabel.Text = str[0].Split(':')[2]));
+            PlayerTwoELOLabel.Invoke((MethodInvoker)(() => PlayerTwoELOLabel.Text = str[1].Split(':')[2]));
+
+            //Get rank data
+            string ranks = "";
+            try { ranks = a.DownloadString(Client.shost + "type=3&name=" + table.players[0].Name); } catch (Exception) { return; }
+            if (ranks == "")
+                return;
+
+            //Setlabels
+            List<string> split = new List<string>(ranks.Split('/'));
+            int[] s = new int[2];
+            for (int i = 0; i < 2; i++)
+                s[i] = split.FindIndex((v) => v.Split(':')[0] == table.players[i].Name)+1;
+            PlayerOneELORankLabel.Invoke((MethodInvoker)(() => PlayerOneELORankLabel.Text = (s[0]!=0)? "|#" + s[0].ToString() + "|" : "" ));
+            PlayerTwoELORankLabel.Invoke((MethodInvoker)(() => PlayerTwoELORankLabel.Text = (s[1]!=0)? "|#" + s[1].ToString() + "|" : ""));
+            return;
         }
 
         //Write out Units Destrolyed
@@ -259,6 +300,8 @@ namespace Chess
 
             richTextBox1.Invoke((MethodInvoker)(() => richTextBox1.Text += "|C| Match found : | " + PlayerOne.Name + " | vs | " + a.Name +  " |"));
 
+
+
             //SetupGame
             SetUpPlayerNamesAndTable();
 
@@ -267,6 +310,9 @@ namespace Chess
             PlayerTwoUnits = new int[5];
             OnUnitDestroly(null);
         }
+
+        
+
 
         public void OppMove(int x, int y, Move a, int b)
         {
@@ -348,13 +394,18 @@ namespace Chess
                 Point currentScreenPos = PointToScreen(e.Location);
                 Location = new Point(currentScreenPos.X - offset.X,currentScreenPos.Y - offset.Y);
 
-                //if (endform.Enabled == true)
-                //    endform.SetPosition();
+                if (endform.Enabled == true)
+                    endform.SetPosition();
                 
             }
         }
 
         private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PlayerOneNameL_Click(object sender, EventArgs e)
         {
 
         }
