@@ -39,6 +39,11 @@
             this.ExitButton = new System.Windows.Forms.Button();
             this.StatusLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.DownloadPanel = new System.Windows.Forms.Panel();
+            this.NextButton = new System.Windows.Forms.Button();
+            this.DownloadChangesLabel = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.DownloadPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -168,12 +173,58 @@
             this.label4.Visible = false;
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
+            // DownloadPanel
+            // 
+            this.DownloadPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DownloadPanel.Controls.Add(this.NextButton);
+            this.DownloadPanel.Controls.Add(this.DownloadChangesLabel);
+            this.DownloadPanel.Controls.Add(this.label6);
+            this.DownloadPanel.Location = new System.Drawing.Point(12, 136);
+            this.DownloadPanel.Name = "DownloadPanel";
+            this.DownloadPanel.Size = new System.Drawing.Size(276, 111);
+            this.DownloadPanel.TabIndex = 14;
+            this.DownloadPanel.Visible = false;
+            // 
+            // NextButton
+            // 
+            this.NextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NextButton.Location = new System.Drawing.Point(136, 54);
+            this.NextButton.Name = "NextButton";
+            this.NextButton.Size = new System.Drawing.Size(123, 32);
+            this.NextButton.TabIndex = 15;
+            this.NextButton.Text = "Next";
+            this.NextButton.UseVisualStyleBackColor = true;
+            this.NextButton.Visible = false;
+            this.NextButton.Click += new System.EventHandler(this.NextButton_Click_1);
+            // 
+            // DownloadChangesLabel
+            // 
+            this.DownloadChangesLabel.AutoSize = true;
+            this.DownloadChangesLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.DownloadChangesLabel.Location = new System.Drawing.Point(9, 60);
+            this.DownloadChangesLabel.Name = "DownloadChangesLabel";
+            this.DownloadChangesLabel.Size = new System.Drawing.Size(141, 18);
+            this.DownloadChangesLabel.TabIndex = 1;
+            this.DownloadChangesLabel.Text = "Jelenleg: bla.png ...";
+            this.DownloadChangesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label6.Location = new System.Drawing.Point(39, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(199, 22);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Resources loading...";
+            // 
             // NameInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(300, 350);
+            this.Controls.Add(this.DownloadPanel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.ExitButton);
@@ -195,6 +246,8 @@
             this.Text = "NameInput";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.NameInput_Load);
+            this.DownloadPanel.ResumeLayout(false);
+            this.DownloadPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,5 +266,9 @@
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel DownloadPanel;
+        private System.Windows.Forms.Label DownloadChangesLabel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button NextButton;
     }
 }

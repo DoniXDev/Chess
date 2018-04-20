@@ -99,7 +99,7 @@ namespace Chess
     public class Table
     {
         // Valami
-        const string FileDir = @"ChessFigures\"; //FileDIR
+        const string FileDir = MainForm.subfiles; //FileDIR
 
         //FFY
 

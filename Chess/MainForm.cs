@@ -19,10 +19,8 @@ namespace Chess
 
     //TODO
 
-    // 1.2
-
-    //ONCE
-    // Erőforrásoakt letültő rendszer letöltő rendszer
+    // 1.3
+    // Erőforrásoakt letültő rendszer letöltő rendszer <= Bábúválasztás
 
     //
 
@@ -30,10 +28,12 @@ namespace Chess
     public partial class MainForm : Form
     {
         //Developement tools
-            // ||  http://localhost/chess  ||  http://donixdev.esy.es || //
 
-        public const string version = "1.2";
-        public const bool IsDev = false;
+            // ||  http://localhost  ||  http://donixdev.esy.es || //
+
+        public const string version = "1.3";
+        public const string subfiles = @"Pieces\";
+        public const bool IsDev = true;
         public const string server = "http://donixdev.esy.es";
         //
 
@@ -74,18 +74,11 @@ namespace Chess
             getplayermove = OppMove;
             resetgame = Reset;
             endform = new GEndForm(this);
-
             label5.Text += version;
-            string a = "";
 
-            if (a != "")
-                EnterPlayerName(a);
-            else
-            {
-                this.Opacity = 0;
-                nameinput = new Chess.NameInput(this);
-                nameinput.Show();
-            }
+            this.Opacity = 0;
+            nameinput = new Chess.NameInput(this);
+            nameinput.Show();
 
 
 
@@ -114,11 +107,12 @@ namespace Chess
                 StartButton.Visible = false;
         }
 
+        //MAIN
+        //
+        // On sreen click / Move
         int x;
         int y;
         bool selected = false;
-
-        // On sreen click
         private void Screen_MouseClick(object sender, MouseEventArgs e)
         {
             //if endgame
@@ -132,7 +126,7 @@ namespace Chess
                 y = e.Y / 26;
 
                 if (table != null)
-                    if(table.ShowPredictions(x, y))
+                    if (table.ShowPredictions(x, y))
                         selected = true;
 
             }
@@ -141,15 +135,13 @@ namespace Chess
                 if (e.Button == MouseButtons.Left)
                     if (table.turn % 2 == table.players.FindIndex((a) => PlayerOne == a))
                         kliens.Move(x, y, new Chess.Move((e.X / 26) - x, (e.Y / 26) - y), table.turn);
-                        //table.Move(x, y, new Chess.Move((e.X / 26) - x, (e.Y / 26) - y), table.players.Find((a) => PlayerOne == a));
+                //table.Move(x, y, new Chess.Move((e.X / 26) - x, (e.Y / 26) - y), table.players.Find((a) => PlayerOne == a));
 
                 table.Show();
 
                 selected = false;
             }
         }
-
-        //MAIN
 
         //Reset!
         public void Reset()
@@ -247,9 +239,9 @@ namespace Chess
         }
 
         //Write out Units Destrolyed
-        Font WriteOutFont = new Font(FontFamily.GenericMonospace, 10);
         public void OnUnitDestroly(Unit a)
         {
+            Font WriteOutFont = new Font(FontFamily.GenericMonospace, 10);
             if (a != null)
                 if (PlayerOne == a.player)
                     PlayerOneUnits[table.GetIDByUnit(a)-1]++;
@@ -286,7 +278,7 @@ namespace Chess
                 PlayerTwoSakkL.Invoke((MethodInvoker)(() => PlayerTwoSakkL.Visible = true));
         }
 
-        //Clinet Queue func
+        //Match found
         public void MatchFound(Player a, int b)
         {
             if (table != null)
@@ -311,9 +303,7 @@ namespace Chess
             OnUnitDestroly(null);
         }
 
-        
-
-
+        //Opp Move
         public void OppMove(int x, int y, Move a, int b)
         {
             if (table != null)
@@ -329,30 +319,8 @@ namespace Chess
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // 0
-        private void Screen_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        // 0
-        private void Screen_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        // SUB FUNC
+        //
 
         // Output auto sroll
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -400,12 +368,7 @@ namespace Chess
             }
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PlayerOneNameL_Click(object sender, EventArgs e)
+        private void label6_Click(object sender, EventArgs e)
         {
 
         }

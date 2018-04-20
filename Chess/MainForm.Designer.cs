@@ -85,9 +85,7 @@
             this.Screen.Name = "Screen";
             this.Screen.Size = new System.Drawing.Size(211, 211);
             this.Screen.TabIndex = 0;
-            this.Screen.Paint += new System.Windows.Forms.PaintEventHandler(this.Screen_Paint);
             this.Screen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Screen_MouseClick);
-            this.Screen.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Screen_MouseMove);
             // 
             // label2
             // 
@@ -160,7 +158,6 @@
             this.label5.Size = new System.Drawing.Size(84, 12);
             this.label5.TabIndex = 9;
             this.label5.Text = "by donix, version: ";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -172,6 +169,7 @@
             this.label6.Size = new System.Drawing.Size(405, 12);
             this.label6.TabIndex = 10;
             this.label6.Text = "________________________________________________________________________________";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // PlayerOneSakkL
             // 
@@ -196,7 +194,6 @@
             this.PlayerOneNameL.Text = "player1";
             this.PlayerOneNameL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.PlayerOneNameL.Visible = false;
-            this.PlayerOneNameL.Click += new System.EventHandler(this.PlayerOneNameL_Click);
             // 
             // PlayerOneUnitsP
             // 

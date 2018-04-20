@@ -58,11 +58,7 @@ namespace Chess
                     else
                     {
                         if (LoginAndRegister(NameTextBox.Text, PassTextBox.Text, 0))
-                        {
-                            mainform.EnterPlayerName(NameTextBox.Text);
-                            File.WriteAllText(@"ChessFigures\a.name", NameTextBox.Text);
-                            this.Close();
-                        }
+                            LoginSucces(NameTextBox.Text);
                         else
                         {
                             PassTextBox.Clear();
@@ -79,13 +75,33 @@ namespace Chess
             SubmitButton.Enabled = true;
         }
 
+        //Login succesfull
+        void LoginSucces(string name)
+        {
+            DownloadPanel.Visible = true;
+            Resources r = new Chess.Resources(() => DownloadSucces(name), DownlaodError, (a) => DownloadChangesLabel.Invoke((MethodInvoker)(() => DownloadChangesLabel.Text = "Now:" + a + "...")));
+            if (!r.AUpdate(name))
+                ExitButton.PerformClick();
+        }
+        //Downlaod succesfull
+        public void DownloadSucces(string name)
+        {
+            DownloadChangesLabel.Invoke((MethodInvoker)(() => DownloadChangesLabel.Text = "End"));
+            NextButton.Invoke((MethodInvoker)(() => NextButton.Visible = true));
+        }
+        public void DownlaodError(string error)
+        {
+            MessageBox.Show("Hiba történt a letöltéskor! Próbáld újra.");
+            ExitButton.PerformClick();
+        }
+
         //Load
         private void NameInput_Load(object sender, EventArgs e)
         {
             label5.Text += MainForm.version;
             string a = "";
-            if (File.Exists(@"ChessFigures\a.name"))
-                a = File.ReadAllText(@"ChessFigures\a.name");
+            if (File.Exists(MainForm.subfiles + "a.name"))
+                a = File.ReadAllText(MainForm.subfiles + "a.name");
             NameTextBox.Text = a;
 
             //Is up to date
@@ -195,6 +211,13 @@ namespace Chess
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void NextButton_Click_1(object sender, EventArgs e)
+        {
+            mainform.EnterPlayerName(NameTextBox.Text);
+            File.WriteAllText(MainForm.subfiles + "a.name", NameTextBox.Text);
+            this.Close();
         }
     }
 }
