@@ -79,14 +79,15 @@ namespace Chess
         void LoginSucces(string name)
         {
             DownloadPanel.Visible = true;
-            Resources r = new Chess.Resources(() => DownloadSucces(name), DownlaodError, (a) => DownloadChangesLabel.Invoke((MethodInvoker)(() => DownloadChangesLabel.Text = "Now:" + a + "...")));
+            Resources r = new Chess.Resources(() => DownloadSucces(name), DownlaodError, (a) => DownloadChangesLabel.Invoke((MethodInvoker)(() => DownloadChangesLabel.Text = a + "...")));
             if (!r.AUpdate(name))
                 ExitButton.PerformClick();
         }
         //Downlaod succesfull
         public void DownloadSucces(string name)
         {
-            DownloadChangesLabel.Invoke((MethodInvoker)(() => DownloadChangesLabel.Text = "End"));
+            DownloadChangesLabel.Invoke((MethodInvoker)(() => DownloadChangesLabel.Visible = false));
+            label6.Invoke((MethodInvoker)(() => label6.Text = "Game setup finished!"));
             NextButton.Invoke((MethodInvoker)(() => NextButton.Visible = true));
         }
         public void DownlaodError(string error)
@@ -160,7 +161,7 @@ namespace Chess
             string str = "";
 
             try{ str = wc.DownloadString(Client.shost + "type=2"); }
-            catch (Exception){ return true; }
+            catch (Exception){ label4.Text = "Server not aviable! Try again./" + Environment.NewLine + "Check your internet connection!"; return true; }
             if (str != MainForm.version)
                 return true;
             return false;

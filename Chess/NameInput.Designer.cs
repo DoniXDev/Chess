@@ -41,8 +41,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.DownloadPanel = new System.Windows.Forms.Panel();
             this.NextButton = new System.Windows.Forms.Button();
-            this.DownloadChangesLabel = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.DownloadChangesLabel = new System.Windows.Forms.TextBox();
             this.DownloadPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -176,8 +176,8 @@
             // DownloadPanel
             // 
             this.DownloadPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DownloadPanel.Controls.Add(this.NextButton);
             this.DownloadPanel.Controls.Add(this.DownloadChangesLabel);
+            this.DownloadPanel.Controls.Add(this.NextButton);
             this.DownloadPanel.Controls.Add(this.label6);
             this.DownloadPanel.Location = new System.Drawing.Point(12, 136);
             this.DownloadPanel.Name = "DownloadPanel";
@@ -188,35 +188,41 @@
             // NextButton
             // 
             this.NextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NextButton.Location = new System.Drawing.Point(136, 54);
+            this.NextButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NextButton.Location = new System.Drawing.Point(79, 59);
             this.NextButton.Name = "NextButton";
             this.NextButton.Size = new System.Drawing.Size(123, 32);
             this.NextButton.TabIndex = 15;
-            this.NextButton.Text = "Next";
+            this.NextButton.Text = "Continue";
             this.NextButton.UseVisualStyleBackColor = true;
             this.NextButton.Visible = false;
             this.NextButton.Click += new System.EventHandler(this.NextButton_Click_1);
-            // 
-            // DownloadChangesLabel
-            // 
-            this.DownloadChangesLabel.AutoSize = true;
-            this.DownloadChangesLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.DownloadChangesLabel.Location = new System.Drawing.Point(9, 60);
-            this.DownloadChangesLabel.Name = "DownloadChangesLabel";
-            this.DownloadChangesLabel.Size = new System.Drawing.Size(141, 18);
-            this.DownloadChangesLabel.TabIndex = 1;
-            this.DownloadChangesLabel.Text = "Jelenleg: bla.png ...";
-            this.DownloadChangesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(39, 15);
+            this.label6.Location = new System.Drawing.Point(44, 20);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(199, 22);
             this.label6.TabIndex = 0;
             this.label6.Text = "Resources loading...";
+            // 
+            // DownloadChangesLabel
+            // 
+            this.DownloadChangesLabel.BackColor = System.Drawing.Color.White;
+            this.DownloadChangesLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DownloadChangesLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DownloadChangesLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.DownloadChangesLabel.Location = new System.Drawing.Point(3, 68);
+            this.DownloadChangesLabel.Name = "DownloadChangesLabel";
+            this.DownloadChangesLabel.ReadOnly = true;
+            this.DownloadChangesLabel.Size = new System.Drawing.Size(268, 19);
+            this.DownloadChangesLabel.TabIndex = 16;
+            this.DownloadChangesLabel.TabStop = false;
+            this.DownloadChangesLabel.Text = "Connecting to server...";
+            this.DownloadChangesLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DownloadChangesLabel.WordWrap = false;
             // 
             // NameInput
             // 
@@ -267,8 +273,8 @@
         private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel DownloadPanel;
-        private System.Windows.Forms.Label DownloadChangesLabel;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button NextButton;
+        private System.Windows.Forms.TextBox DownloadChangesLabel;
     }
 }

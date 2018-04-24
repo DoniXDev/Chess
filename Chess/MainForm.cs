@@ -31,9 +31,9 @@ namespace Chess
 
             // ||  http://localhost  ||  http://donixdev.esy.es || //
 
-        public const string version = "1.3";
+        public const string version = "1.3.1";
         public const string subfiles = @"Pieces\";
-        public const bool IsDev = true;
+        public const bool IsDev = false;
         public const string server = "http://donixdev.esy.es";
         //
 
