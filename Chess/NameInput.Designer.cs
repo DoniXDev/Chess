@@ -40,9 +40,9 @@
             this.StatusLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.DownloadPanel = new System.Windows.Forms.Panel();
+            this.DownloadChangesLabel = new System.Windows.Forms.TextBox();
             this.NextButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.DownloadChangesLabel = new System.Windows.Forms.TextBox();
             this.DownloadPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +50,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(34, 94);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(110, 25);
@@ -62,6 +62,7 @@
             this.NameTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.NameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.NameTextBox.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.NameTextBox.ForeColor = System.Drawing.Color.Black;
             this.NameTextBox.Location = new System.Drawing.Point(39, 127);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(221, 22);
@@ -70,6 +71,7 @@
             // SubmitButton
             // 
             this.SubmitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SubmitButton.ForeColor = System.Drawing.Color.Black;
             this.SubmitButton.Location = new System.Drawing.Point(39, 237);
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(123, 32);
@@ -83,6 +85,7 @@
             this.PassTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.PassTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PassTextBox.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.PassTextBox.ForeColor = System.Drawing.Color.Black;
             this.PassTextBox.Location = new System.Drawing.Point(39, 190);
             this.PassTextBox.Name = "PassTextBox";
             this.PassTextBox.PasswordChar = '*';
@@ -95,7 +98,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(34, 161);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 25);
@@ -105,6 +108,7 @@
             // SwichButton
             // 
             this.SwichButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SwichButton.ForeColor = System.Drawing.Color.Black;
             this.SwichButton.Location = new System.Drawing.Point(168, 237);
             this.SwichButton.Name = "SwichButton";
             this.SwichButton.Size = new System.Drawing.Size(92, 32);
@@ -117,6 +121,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(94, 35);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 32);
@@ -127,6 +132,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(94, 61);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -139,6 +145,7 @@
             // 
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ExitButton.ForeColor = System.Drawing.Color.Black;
             this.ExitButton.Location = new System.Drawing.Point(100, 275);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(97, 25);
@@ -163,6 +170,7 @@
             this.label4.AutoSize = true;
             this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(49, 136);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -179,11 +187,28 @@
             this.DownloadPanel.Controls.Add(this.DownloadChangesLabel);
             this.DownloadPanel.Controls.Add(this.NextButton);
             this.DownloadPanel.Controls.Add(this.label6);
+            this.DownloadPanel.ForeColor = System.Drawing.Color.Black;
             this.DownloadPanel.Location = new System.Drawing.Point(12, 136);
             this.DownloadPanel.Name = "DownloadPanel";
             this.DownloadPanel.Size = new System.Drawing.Size(276, 111);
             this.DownloadPanel.TabIndex = 14;
             this.DownloadPanel.Visible = false;
+            // 
+            // DownloadChangesLabel
+            // 
+            this.DownloadChangesLabel.BackColor = System.Drawing.Color.White;
+            this.DownloadChangesLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DownloadChangesLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DownloadChangesLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.DownloadChangesLabel.Location = new System.Drawing.Point(3, 68);
+            this.DownloadChangesLabel.Name = "DownloadChangesLabel";
+            this.DownloadChangesLabel.ReadOnly = true;
+            this.DownloadChangesLabel.Size = new System.Drawing.Size(268, 19);
+            this.DownloadChangesLabel.TabIndex = 16;
+            this.DownloadChangesLabel.TabStop = false;
+            this.DownloadChangesLabel.Text = "Connecting to server...";
+            this.DownloadChangesLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DownloadChangesLabel.WordWrap = false;
             // 
             // NextButton
             // 
@@ -207,22 +232,6 @@
             this.label6.Size = new System.Drawing.Size(199, 22);
             this.label6.TabIndex = 0;
             this.label6.Text = "Resources loading...";
-            // 
-            // DownloadChangesLabel
-            // 
-            this.DownloadChangesLabel.BackColor = System.Drawing.Color.White;
-            this.DownloadChangesLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DownloadChangesLabel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.DownloadChangesLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.DownloadChangesLabel.Location = new System.Drawing.Point(3, 68);
-            this.DownloadChangesLabel.Name = "DownloadChangesLabel";
-            this.DownloadChangesLabel.ReadOnly = true;
-            this.DownloadChangesLabel.Size = new System.Drawing.Size(268, 19);
-            this.DownloadChangesLabel.TabIndex = 16;
-            this.DownloadChangesLabel.TabStop = false;
-            this.DownloadChangesLabel.Text = "Connecting to server...";
-            this.DownloadChangesLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.DownloadChangesLabel.WordWrap = false;
             // 
             // NameInput
             // 

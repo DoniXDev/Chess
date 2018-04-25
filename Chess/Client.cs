@@ -116,6 +116,7 @@ namespace Chess
         {
             WebClient a = new WebClient();
             string gettxt = "type=3&name=" + player.Name + "&id=" + lobby;
+            int e = 0;
 
             while (true)
             {
@@ -124,11 +125,17 @@ namespace Chess
 
                 if (str == "?")
                 {
-                    output.Text += "!!! Error from server, game canceled. Exit !!!" + Environment.NewLine;
-                    return;
+                    if (e > 5)
+                    {
+                        output.Invoke((MethodInvoker)(() => output.Text += "|C| Game has canceled. Close the program" + Environment.NewLine));
+                        return;
+                    }
+
+                    output.Invoke((MethodInvoker)(() => output.Text += "|C| Server is not responding for " + e + ". times." + Environment.NewLine));
+                    e++;
                 }
 
-                if (str != "")
+                if (str != "" && str != "?")
                 {
                     string[] splitted = str.Split(';');
 
@@ -174,16 +181,17 @@ namespace Chess
         }
         public bool Move(int x, int y, Move a, int t)
         {
-
             string str = x + ":" + y + "*" + a.ChangeX + ":" + a.ChangeY;
-                
 
             string jointxt = "type=4&name=" + player.Name + "&turn=" + t + "&move=" + str + "&id=" + lobby;
-            
-            if (wc.DownloadString(host + jointxt) == "ok")
-                return true;
-            else
-                return false;
+
+            try
+            {
+                if (wc.DownloadString(host + jointxt) == "ok")
+                    return true;
+            }
+            catch (Exception) { output.Text += "|C| Error while request move! Try Again.";}
+            return false;
         }
         public int GameEnd(Player p1, Player p2)
         {

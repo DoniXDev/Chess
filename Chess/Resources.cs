@@ -51,7 +51,7 @@ namespace Chess
         public bool AUpdate(string name)
         {
             string str = "";
-            try{ str = wc.DownloadString(Client.shost + "type=0&name=" + name).Split(':')[4]; } catch (Exception){}
+            try{ str = wc.DownloadString(Client.shost + "type=0&name=" + name).Split(':')[4]; } catch (Exception ex){ fce.Invoke(ex.Message); }
             if(str == "")
                 return false;
 

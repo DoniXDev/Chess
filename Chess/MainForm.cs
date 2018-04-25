@@ -19,8 +19,18 @@ namespace Chess
 
     //TODO
 
-    // 1.3
-    // Erőforrásoakt letültő rendszer letöltő rendszer <= Bábúválasztás
+    // sakk algoritmis hiba ??? Nem tudom előidézni!
+
+    // 1.4
+
+    //END
+    //grapics reset fix
+    //double step with gyalog
+    //ékezetes betű a névben off
+    //kilépés meccs közben => vesztés
+    //updater visualfix
+    //egységes színek
+    //bad request from server filter
 
     //
 
@@ -31,7 +41,7 @@ namespace Chess
 
             // ||  http://localhost  ||  http://donixdev.esy.es || //
 
-        public const string version = "1.3.1";
+        public const string version = "1.4";
         public const string subfiles = @"Pieces\";
         public const bool IsDev = false;
         public const string server = "http://donixdev.esy.es";
@@ -132,13 +142,12 @@ namespace Chess
             }
             else
             {
+                var str = new Chess.Move((e.X / 26) - x, (e.Y / 26) - y);
                 if (e.Button == MouseButtons.Left)
                     if (table.turn % 2 == table.players.FindIndex((a) => PlayerOne == a))
-                        kliens.Move(x, y, new Chess.Move((e.X / 26) - x, (e.Y / 26) - y), table.turn);
-                //table.Move(x, y, new Chess.Move((e.X / 26) - x, (e.Y / 26) - y), table.players.Find((a) => PlayerOne == a));
+                        kliens.Move(x, y, str, table.turn);
 
                 table.Show();
-
                 selected = false;
             }
         }
@@ -146,7 +155,7 @@ namespace Chess
         //Reset!
         public void Reset()
         {
-            //Game win/lose || dodge not
+            //Game win/lose || dodge too
             if (table.endgame != 2)
                 if (table.players.Find((v) => v != table.players[table.endgame]) == PlayerOne)
                 {
@@ -155,6 +164,11 @@ namespace Chess
                 }
                 else
                     endform.Lose();
+            else
+            {
+                int val = kliens.GameEnd(PlayerOne, table.players.Find((v) => v.Name != PlayerOne.Name));
+                endform.Win(val);
+            }
             
 
             //Reset: Game
@@ -371,6 +385,19 @@ namespace Chess
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Screen_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (table == null)
+                return;
+            table.Show();
+            OnUnitDestroly(null);
         }
     }
 }

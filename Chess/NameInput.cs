@@ -46,7 +46,7 @@ namespace Chess
                     StatusLabel.Text = "";
                     if (!IsLogin)
                     {
-                        if (LoginAndRegister(NameTextBox.Text, PassTextBox.Text, 1))
+                        if (LoginAndRegister(FilteredName(NameTextBox.Text), PassTextBox.Text, 1))
                         {
                             StatusLabel.Text = "Sikeres regisztráció! Jelentkezz be.";
                             PassTextBox.Text = "";
@@ -57,8 +57,8 @@ namespace Chess
                     }
                     else
                     {
-                        if (LoginAndRegister(NameTextBox.Text, PassTextBox.Text, 0))
-                            LoginSucces(NameTextBox.Text);
+                        if (LoginAndRegister(FilteredName(NameTextBox.Text), PassTextBox.Text, 0))
+                            LoginSucces(FilteredName(NameTextBox.Text));
                         else
                         {
                             PassTextBox.Clear();
@@ -80,7 +80,7 @@ namespace Chess
         {
             DownloadPanel.Visible = true;
             Resources r = new Chess.Resources(() => DownloadSucces(name), DownlaodError, (a) => DownloadChangesLabel.Invoke((MethodInvoker)(() => DownloadChangesLabel.Text = a + "...")));
-            if (!r.AUpdate(name))
+            if (!r.AUpdate(FilteredName(name)))
                 ExitButton.PerformClick();
         }
         //Downlaod succesfull
@@ -92,7 +92,7 @@ namespace Chess
         }
         public void DownlaodError(string error)
         {
-            MessageBox.Show("Hiba történt a letöltéskor! Próbáld újra.");
+            MessageBox.Show("Hiba történt a letöltéskor! Próbáld újra." + Environment.NewLine + error);
             ExitButton.PerformClick();
         }
 
@@ -197,6 +197,20 @@ namespace Chess
                 return BitConverter.ToString(hash).Replace("-", "");
             }
         }
+
+        //Charfilter
+        public string FilteredName(string str)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (char c in str)
+            {
+                if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '.')
+                {
+                    sb.Append(c);
+                }
+            }
+            return sb.ToString();
+    }
 
         private void PassTextBox_KeyDown(object sender, KeyEventArgs e)
         {

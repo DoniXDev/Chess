@@ -18,18 +18,11 @@ namespace Chess
     {
         public int ChangeX;
         public int ChangeY;
-        public bool special;
 
         public Move(int x, int y)
         {
             ChangeX = x;
             ChangeY = y;
-        }
-        public Move(int x, int y, bool spec)
-        {
-            ChangeX = x;
-            ChangeY = y;
-            special = spec;
         }
     }
 
@@ -128,14 +121,13 @@ namespace Chess
             {
                 int x = i.ChangeX;
                 int y = i.ChangeY;
-                bool spec = i.special; 
 
                 //1
-                t.Add(new Move(x,y,spec));
+                t.Add(new Move(x,y));
                 if (!FLJB)
                 {
                     //2
-                    Move str = new Move(x, y, spec);
+                    Move str = new Move(x, y);
                     str.ChangeY *=  -1;
                     if(!IsAviableMoves(t,str))
                         t.Add(str);
@@ -145,7 +137,7 @@ namespace Chess
                     //2
                     if (y != 0)
                     {
-                        Move str = new Move(x, y, spec);
+                        Move str = new Move(x, y);
                         str.ChangeY *= -1;
                         if (!IsAviableMoves(t, str))
                             t.Add(str);
@@ -154,14 +146,14 @@ namespace Chess
                     //3
                     if (x != 0)
                     {
-                        Move str2 = new Move(x, y, spec);
+                        Move str2 = new Move(x, y);
                         str2.ChangeX *= -1;
                         if (!IsAviableMoves(t, str2))
                             t.Add(str2);
                     }
 
                     //4
-                    Move str3 = new Move(x, y, spec);
+                    Move str3 = new Move(x, y);
                     if (x != 0)
                         str3.ChangeY *= -1;
                     if (y != 0)
@@ -214,7 +206,7 @@ namespace Chess
                 return false;      
         }
 
-        bool IsVaildMove(Move a, Unit b)
+        public bool IsVaildMove(Move a, Unit b)
         { 
             int X = a.ChangeX + b.x;
             int Y = a.ChangeY + b.y;
@@ -245,13 +237,12 @@ namespace Chess
                     if (SelectUnitByXY(X, Y).GetType() == typeof(Unit))
                         return false;
 
-                if (!(b.y == 1 || b.y == 6) && a.special)
+                if (!(b.y == 1 || b.y == 6) && Math.Abs(a.ChangeY) > 1)
                     return false;
 
                 if (SelectUnitByXY(X, Y).GetType() != typeof(Unit)) 
                     if (a.ChangeX == 0)
                         return false;
-
             }
 
             if(!(typeof(Huszar).Equals(b.GetType())))
@@ -277,7 +268,7 @@ namespace Chess
             return -1;
         }
 
-        Unit SelectUnitByXY(int x, int y)
+        public Unit SelectUnitByXY(int x, int y)
         {
             foreach (Unit item in units)
                 if (item.x == x && item.y == y)
@@ -371,7 +362,7 @@ namespace Chess
             return a;
         }
 
-        List<Move> GetMoves(Unit u)
+        public List<Move> GetMoves(Unit u)
         {
             int id = GetIDByUnit(u);
             List<Move> a = new List<Move>();
@@ -382,7 +373,7 @@ namespace Chess
                     break;
                 case 1:
                     a.Add(new Move(0, 1));
-                    a.Add(new Move(0, 2, true));
+                    a.Add(new Move(0, 2));
                     a.Add(new Move(1, 1));
                     a.Add(new Move(-1, 1));
                     break;             
@@ -485,8 +476,10 @@ namespace Chess
             Unit selected = SelectUnitByXY(x, y);
             List<Move> ez = WithReversedMoves(GetMoves(selected), selected.EHJB);
             var aviable = ez.FindAll((item) => IsVaildMove(item, selected));
+
             if (aviable.Count == 0)
                 return false;
+
             aviable.ForEach((item) => graphics.DrawRectangle(new Pen(Color.Red,2), new Rectangle(((selected.x + item.ChangeX) * 26), ((selected.y + item.ChangeY )* 26), 26, 26)));
             return true;
         }
@@ -515,8 +508,10 @@ namespace Chess
         public bool Move(int x, int y, Move b, Player c)
         {
             Unit selected = SelectUnitByXY(x, y);
-
             List<Move> aviable = WithReversedMoves(GetMoves(selected), selected.EHJB);
+
+            if (aviable.Count == 0)
+                return false;
 
             if (IsAviableMoves(aviable, b) && IsVaildMove(b, selected) && c == selected.player && turn > -1)
             {

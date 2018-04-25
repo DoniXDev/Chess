@@ -49,6 +49,7 @@
             this.PlayerOneELORankLabel = new System.Windows.Forms.Label();
             this.PlayerTwoELORankLabel = new System.Windows.Forms.Label();
             this.PlayerTwoELOLabel = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.Screen.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,7 +82,7 @@
             this.Screen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Screen.Controls.Add(this.label2);
             this.Screen.Font = new System.Drawing.Font("MS Outlook", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.Screen.Location = new System.Drawing.Point(27, 92);
+            this.Screen.Location = new System.Drawing.Point(36, 94);
             this.Screen.Name = "Screen";
             this.Screen.Size = new System.Drawing.Size(211, 211);
             this.Screen.TabIndex = 0;
@@ -104,6 +105,7 @@
             this.richTextBox1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.richTextBox1.ForeColor = System.Drawing.Color.Black;
             this.richTextBox1.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.richTextBox1.Location = new System.Drawing.Point(406, -2);
             this.richTextBox1.Name = "richTextBox1";
@@ -119,7 +121,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(34, 305);
+            this.label1.Location = new System.Drawing.Point(43, 311);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label1.Size = new System.Drawing.Size(204, 11);
@@ -130,7 +132,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 99);
+            this.label3.Location = new System.Drawing.Point(18, 101);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label3.Size = new System.Drawing.Size(13, 195);
@@ -141,7 +143,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(190, 11);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 32);
@@ -152,6 +154,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(266, 39);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -175,6 +178,7 @@
             // 
             this.PlayerOneSakkL.AutoSize = true;
             this.PlayerOneSakkL.Font = new System.Drawing.Font("Arial Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.PlayerOneSakkL.ForeColor = System.Drawing.Color.Black;
             this.PlayerOneSakkL.Location = new System.Drawing.Point(326, 170);
             this.PlayerOneSakkL.Name = "PlayerOneSakkL";
             this.PlayerOneSakkL.Size = new System.Drawing.Size(64, 22);
@@ -186,7 +190,7 @@
             // 
             this.PlayerOneNameL.AutoSize = true;
             this.PlayerOneNameL.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.PlayerOneNameL.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.PlayerOneNameL.ForeColor = System.Drawing.Color.Black;
             this.PlayerOneNameL.Location = new System.Drawing.Point(262, 90);
             this.PlayerOneNameL.Name = "PlayerOneNameL";
             this.PlayerOneNameL.Size = new System.Drawing.Size(72, 22);
@@ -197,6 +201,7 @@
             // 
             // PlayerOneUnitsP
             // 
+            this.PlayerOneUnitsP.ForeColor = System.Drawing.Color.Black;
             this.PlayerOneUnitsP.Location = new System.Drawing.Point(263, 118);
             this.PlayerOneUnitsP.Name = "PlayerOneUnitsP";
             this.PlayerOneUnitsP.Size = new System.Drawing.Size(131, 27);
@@ -204,6 +209,7 @@
             // 
             // PlayerTwoUnitsP
             // 
+            this.PlayerTwoUnitsP.ForeColor = System.Drawing.Color.Black;
             this.PlayerTwoUnitsP.Location = new System.Drawing.Point(263, 246);
             this.PlayerTwoUnitsP.Name = "PlayerTwoUnitsP";
             this.PlayerTwoUnitsP.Size = new System.Drawing.Size(131, 27);
@@ -213,7 +219,7 @@
             // 
             this.PlayerTwoNameL.AutoSize = true;
             this.PlayerTwoNameL.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.PlayerTwoNameL.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.PlayerTwoNameL.ForeColor = System.Drawing.Color.Black;
             this.PlayerTwoNameL.Location = new System.Drawing.Point(261, 219);
             this.PlayerTwoNameL.Name = "PlayerTwoNameL";
             this.PlayerTwoNameL.Size = new System.Drawing.Size(72, 22);
@@ -226,6 +232,7 @@
             // 
             this.PlayerTwoSakkL.AutoSize = true;
             this.PlayerTwoSakkL.Font = new System.Drawing.Font("Arial Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.PlayerTwoSakkL.ForeColor = System.Drawing.Color.Black;
             this.PlayerTwoSakkL.Location = new System.Drawing.Point(326, 297);
             this.PlayerTwoSakkL.Name = "PlayerTwoSakkL";
             this.PlayerTwoSakkL.Size = new System.Drawing.Size(64, 22);
@@ -237,6 +244,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(254, 190);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -248,7 +256,7 @@
             // 
             this.PlayerOneELOLabel.AutoSize = true;
             this.PlayerOneELOLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.PlayerOneELOLabel.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.PlayerOneELOLabel.ForeColor = System.Drawing.Color.Black;
             this.PlayerOneELOLabel.Location = new System.Drawing.Point(266, 156);
             this.PlayerOneELOLabel.Name = "PlayerOneELOLabel";
             this.PlayerOneELOLabel.Size = new System.Drawing.Size(43, 22);
@@ -261,7 +269,7 @@
             // 
             this.PlayerOneELORankLabel.AutoSize = true;
             this.PlayerOneELORankLabel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.PlayerOneELORankLabel.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.PlayerOneELORankLabel.ForeColor = System.Drawing.Color.Black;
             this.PlayerOneELORankLabel.Location = new System.Drawing.Point(307, 148);
             this.PlayerOneELORankLabel.Name = "PlayerOneELORankLabel";
             this.PlayerOneELORankLabel.Size = new System.Drawing.Size(23, 14);
@@ -274,7 +282,7 @@
             // 
             this.PlayerTwoELORankLabel.AutoSize = true;
             this.PlayerTwoELORankLabel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.PlayerTwoELORankLabel.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.PlayerTwoELORankLabel.ForeColor = System.Drawing.Color.Black;
             this.PlayerTwoELORankLabel.Location = new System.Drawing.Point(307, 277);
             this.PlayerTwoELORankLabel.Name = "PlayerTwoELORankLabel";
             this.PlayerTwoELORankLabel.Size = new System.Drawing.Size(23, 14);
@@ -287,7 +295,7 @@
             // 
             this.PlayerTwoELOLabel.AutoSize = true;
             this.PlayerTwoELOLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.PlayerTwoELOLabel.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.PlayerTwoELOLabel.ForeColor = System.Drawing.Color.Black;
             this.PlayerTwoELOLabel.Location = new System.Drawing.Point(264, 281);
             this.PlayerTwoELOLabel.Name = "PlayerTwoELOLabel";
             this.PlayerTwoELOLabel.Size = new System.Drawing.Size(43, 22);
@@ -296,12 +304,26 @@
             this.PlayerTwoELOLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.PlayerTwoELOLabel.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button1.Location = new System.Drawing.Point(15, 304);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(22, 22);
+            this.button1.TabIndex = 22;
+            this.button1.TabStop = false;
+            this.button1.Text = "⟳";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(631, 332);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.PlayerTwoELORankLabel);
             this.Controls.Add(this.PlayerTwoELOLabel);
             this.Controls.Add(this.PlayerOneELORankLabel);
@@ -322,6 +344,7 @@
             this.Controls.Add(this.StartButton);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.Screen);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.ShowIcon = false;
@@ -360,5 +383,6 @@
         private System.Windows.Forms.Label PlayerOneELORankLabel;
         private System.Windows.Forms.Label PlayerTwoELORankLabel;
         private System.Windows.Forms.Label PlayerTwoELOLabel;
+        private System.Windows.Forms.Button button1;
     }
 }
