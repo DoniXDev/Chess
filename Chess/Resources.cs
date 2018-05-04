@@ -104,7 +104,6 @@ namespace Chess
             File.WriteAllText(localpath + "b.down", piecescode);
 
             fcd.Invoke();
-            return;
          }
 
         //Get Datas from server

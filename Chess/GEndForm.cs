@@ -14,6 +14,7 @@ namespace Chess
     {
         MainForm mainform;
 
+
         public GEndForm(MainForm a)
         {
             InitializeComponent();
@@ -59,12 +60,6 @@ namespace Chess
             mainform.Invoke((MethodInvoker)(() => SetPosition()));
             mainform.Invoke((MethodInvoker)(() => this.Enabled = true));
             mainform.Invoke((MethodInvoker)(() => this.Show()));
-        }
-
-        //0
-        private void GEndForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)

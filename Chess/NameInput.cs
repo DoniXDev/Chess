@@ -15,17 +15,12 @@ namespace Chess
 {
     public partial class NameInput : Form
     {
-        //http://localhost/chess/login_api.php?
-        //http://donixdev.esy.es/chess/login_api.php?
-
-        const string host = "http://donixdev.esy.es/chess/login_api.php?";
+        const string host = MainForm.server + "/chess/login_api.php?";
         bool IsLogin = true;
         WebClient wc;
         MainForm mainform;
+        Resources r;
 
-        //
-        //Main Funcs
-        //
 
         //Main
         public NameInput(MainForm a)
@@ -38,7 +33,7 @@ namespace Chess
         //Login/Reg Butt
         private void button1_Click(object sender, EventArgs e)
         {
-            if (NameTextBox.Text != "" && NameTextBox.Text.Length < 18 && NameTextBox.Text.Length > 3)
+            if (NameTextBox.Text != "" && NameTextBox.Text.Length < 18 && NameTextBox.Text.Length > 3 && IsFilteredName(NameTextBox.Text))
             {
                 if (PassTextBox.Text != "")
                 {
@@ -57,7 +52,7 @@ namespace Chess
                     }
                     else
                     {
-                        if (LoginAndRegister(FilteredName(NameTextBox.Text), PassTextBox.Text, 0))
+                        if (LoginAndRegister(FilteredName(NameTextBox.Text), PassTextBox.Text, 0) || MainForm.AutoLogin)
                             LoginSucces(FilteredName(NameTextBox.Text));
                         else
                         {
@@ -70,7 +65,7 @@ namespace Chess
                     StatusLabel.Text = "Nem írtál be jelszót!";
             }
             else
-                StatusLabel.Text = "Nem irtál be felhasználónevet vagy túl hosszú!";
+                StatusLabel.Text = "A felhasználónév nem felel meg a feltételeknek!";
 
             SubmitButton.Enabled = true;
         }
@@ -78,11 +73,18 @@ namespace Chess
         //Login succesfull
         void LoginSucces(string name)
         {
+            NameTextBox.Enabled = false;
+            PassTextBox.Enabled = false;
+
+            SubmitButton.Visible = false;
+            SwichButton.Visible = false;
+
             DownloadPanel.Visible = true;
-            Resources r = new Chess.Resources(() => DownloadSucces(name), DownlaodError, (a) => DownloadChangesLabel.Invoke((MethodInvoker)(() => DownloadChangesLabel.Text = a + "...")));
+            r = new Chess.Resources(() => DownloadSucces(name), DownlaodError, (a) => DownloadChangesLabel.Invoke((MethodInvoker)(() => DownloadChangesLabel.Text = a + "...")));
             if (!r.AUpdate(FilteredName(name)))
                 ExitButton.PerformClick();
         }
+
         //Downlaod succesfull
         public void DownloadSucces(string name)
         {
@@ -90,6 +92,8 @@ namespace Chess
             label6.Invoke((MethodInvoker)(() => label6.Text = "Game setup finished!"));
             NextButton.Invoke((MethodInvoker)(() => NextButton.Visible = true));
         }
+
+        //Downlaod failed
         public void DownlaodError(string error)
         {
             MessageBox.Show("Hiba történt a letöltéskor! Próbáld újra." + Environment.NewLine + error);
@@ -104,6 +108,8 @@ namespace Chess
             if (File.Exists(MainForm.subfiles + "a.name"))
                 a = File.ReadAllText(MainForm.subfiles + "a.name");
             NameTextBox.Text = a;
+
+            //Tooltip Setup
 
             //Is up to date
             if (IsNewVersion()&& !MainForm.IsDev)
@@ -131,13 +137,6 @@ namespace Chess
 
         }
 
-
-        //
-        //Sub Funcs
-        //
-
-
-        //Update FUNCT
         //Update button
         private void label4_Click(object sender, EventArgs e)
         {
@@ -184,6 +183,9 @@ namespace Chess
 
             try { requestWeb = wc.DownloadString(requestString);} catch (Exception) { }
 
+            if (MainForm.AutoLogin && type == 0)
+             return true;
+
             return requestWeb == "1";
         }
 
@@ -211,26 +213,23 @@ namespace Chess
             }
             return sb.ToString();
     }
+        public bool IsFilteredName(string str)
+        {
+            foreach (char c in str)
+                if (!((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '.'))
+                    return false;
+            return true;
+        }
 
         private void PassTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == 13)
                 SubmitButton.PerformClick();
         }
-
-        private void PassTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void NextButton_Click_1(object sender, EventArgs e)
         {
             mainform.EnterPlayerName(NameTextBox.Text);
+            if (r != null) r.AStop(); 
             File.WriteAllText(MainForm.subfiles + "a.name", NameTextBox.Text);
             this.Close();
         }

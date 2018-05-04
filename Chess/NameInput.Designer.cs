@@ -91,7 +91,6 @@
             this.PassTextBox.PasswordChar = '*';
             this.PassTextBox.Size = new System.Drawing.Size(221, 22);
             this.PassTextBox.TabIndex = 2;
-            this.PassTextBox.TextChanged += new System.EventHandler(this.PassTextBox_TextChanged);
             this.PassTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PassTextBox_KeyDown);
             // 
             // label2
@@ -139,7 +138,6 @@
             this.label5.Size = new System.Drawing.Size(84, 12);
             this.label5.TabIndex = 10;
             this.label5.Text = "by donix, version: ";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // ExitButton
             // 

@@ -137,31 +137,36 @@ namespace Chess
 
                 if (str != "" && str != "?")
                 {
-                    string[] splitted = str.Split(';');
-
-                    string wp = splitted[0];
-                    string bp = splitted[1];
-                    string move = splitted[2];
-                    int turn = int.Parse(splitted[3]);
-
-                    if (move == "START")
+                    try
                     {
-                        findmatch.Invoke(new Player((wp == player.Name) ? bp : wp), (wp == player.Name) ? 1 : 2);
-                    }
-                    else if (move == "DODGE")
-                    {
-                        output.Invoke((MethodInvoker)(() => output.Text += "Your opponent left the game!" + Environment.NewLine));
-                        resetgame.Invoke();
-                        return;
-                    }
-                    else
-                    {
-                        string[] movesplitted = move.Split('*');
-                        string[] startpos = movesplitted[0].Split(':');
-                        string[] movepos = movesplitted[1].Split(':');
 
-                        getplayermove.Invoke(int.Parse(startpos[0]), int.Parse(startpos[1]), new Move(int.Parse(movepos[0]), int.Parse(movepos[1])), turn);
+                        string[] splitted = str.Split(';');
+
+                        string wp = splitted[0];
+                        string bp = splitted[1];
+                        string move = splitted[2];
+                        int turn = int.Parse(splitted[3]);
+
+                        if (move == "START")
+                        {
+                            findmatch.Invoke(new Player((wp == player.Name) ? bp : wp), (wp == player.Name) ? 1 : 2);
+                        }
+                        else if (move == "DODGE")
+                        {
+                            output.Invoke((MethodInvoker)(() => output.Text += "Your opponent left the game!" + Environment.NewLine));
+                            resetgame.Invoke();
+                            return;
+                        }
+                        else
+                        {
+                            string[] movesplitted = move.Split('*');
+                            string[] startpos = movesplitted[0].Split(':');
+                            string[] movepos = movesplitted[1].Split(':');
+
+                            getplayermove.Invoke(int.Parse(startpos[0]), int.Parse(startpos[1]), new Move(int.Parse(movepos[0]), int.Parse(movepos[1])), turn);
+                        }
                     }
+                    catch (Exception){output.Invoke((MethodInvoker)(() => output.Text += "|C| Server is not responding for " + e + ". times." + Environment.NewLine));e++; }
                 }
                 Thread.Sleep(1000);
             }
@@ -182,7 +187,6 @@ namespace Chess
         public bool Move(int x, int y, Move a, int t)
         {
             string str = x + ":" + y + "*" + a.ChangeX + ":" + a.ChangeY;
-
             string jointxt = "type=4&name=" + player.Name + "&turn=" + t + "&move=" + str + "&id=" + lobby;
 
             try

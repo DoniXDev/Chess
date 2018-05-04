@@ -549,7 +549,6 @@ namespace Chess
                 output.Invoke((MethodInvoker)(() => output.Text += "T:"+ turn + " [" + c.Name + "] " + o[x] + (y+1).ToString() + " => " + (o[x +b.ChangeX]).ToString() + (y+b.ChangeY+1).ToString() + " with: " + selected.GetType().ToString().Split('.')[1]   +  Environment.NewLine));
 
                 //Sakk / Matt
-                bool kk = false;
                 Player given = null;
                 players.ForEach((v) => {
                     int index = players.FindIndex((u) => u == v);
@@ -564,7 +563,6 @@ namespace Chess
                         else
                         {
                             endgame = index;
-                            turn = -1;
                             output.Invoke((MethodInvoker)(() => output.Text += "SAKKMATT for " + v.Name + Environment.NewLine));
                             output.Invoke((MethodInvoker)(() => output.Text += "Win for " + players.Find((u) => u != v).Name  + Environment.NewLine));
                             resetgame.Invoke();
@@ -576,9 +574,6 @@ namespace Chess
 
                 sakkfordel.Invoke(given);
                 Show();
-
-                if (kk)
-                    return true;
 
                 if (!(turn<0))
                     turn++;   

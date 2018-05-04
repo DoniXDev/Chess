@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 using System.Windows.Forms;
-using Chess;
 using System.Threading;
 using System.Net;
 
@@ -19,21 +12,13 @@ namespace Chess
 
     //TODO
 
-    // sakk algoritmis hiba ??? Nem tudom előidézni!
+    // 1.5
+    // Sakk algoritmis hiba || Dupla király bug
+    // Hang
+    // Időzítő
 
-    // 1.4
-
-    //END
-    //grapics reset fix
-    //double step with gyalog
-    //ékezetes betű a névben off
-    //kilépés meccs közben => vesztés
-    //updater visualfix
-    //egységes színek
-    //bad request from server filter
 
     //
-
 
     public partial class MainForm : Form
     {
@@ -41,9 +26,10 @@ namespace Chess
 
             // ||  http://localhost  ||  http://donixdev.esy.es || //
 
-        public const string version = "1.4";
+        public const string version = "1.4.1";
         public const string subfiles = @"Pieces\";
         public const bool IsDev = false;
+        public const bool AutoLogin = IsDev && true;
         public const string server = "http://donixdev.esy.es";
         //
 
@@ -70,9 +56,9 @@ namespace Chess
         int[] PlayerOneUnits;
         int[] PlayerTwoUnits;
 
-
         public string PlayerName = "";
         public Player PlayerOne;
+
 
         //LOAD
         private void NewForm_Load(object sender, EventArgs e)
@@ -93,6 +79,8 @@ namespace Chess
 
 
         }
+
+        //LOAD PALYER
         public void EnterPlayerName(string a)
         {
             PlayerOne = new Player(a);
@@ -100,6 +88,7 @@ namespace Chess
 
             kliens = new Client(PlayerOne, getplayermove, findmatch, richTextBox1, resetgame, this);
         }
+
 
         //EXIT BUTTON
         private void ExitButton_Click(object sender, EventArgs e)
@@ -117,8 +106,8 @@ namespace Chess
                 StartButton.Visible = false;
         }
 
-        //MAIN
-        //
+        //MAIN FUNC
+
         // On sreen click / Move
         int x;
         int y;
@@ -127,7 +116,7 @@ namespace Chess
         {
             //if endgame
             if (table != null)
-                if (table.turn == -1)
+                if (!(table.turn >-1))
                     return;
 
             if (!selected)
@@ -135,6 +124,9 @@ namespace Chess
                 x = e.X / 26;
                 y = e.Y / 26;
 
+                if ((y > 8 && y < 0) && (x > 8 && x < 0))
+                    return;
+               
                 if (table != null)
                     if (table.ShowPredictions(x, y))
                         selected = true;
@@ -142,10 +134,14 @@ namespace Chess
             }
             else
             {
-                var str = new Chess.Move((e.X / 26) - x, (e.Y / 26) - y);
+                var str = new Move((e.X / 26) - x, (e.Y / 26) - y);
                 if (e.Button == MouseButtons.Left)
                     if (table.turn % 2 == table.players.FindIndex((a) => PlayerOne == a))
-                        kliens.Move(x, y, str, table.turn);
+                    {
+                        int a = table.turn;
+                        OppMove(x, y, str, a);
+                        while(!kliens.Move(x, y, str, a));
+                    }
 
                 table.Show();
                 selected = false;
@@ -334,8 +330,7 @@ namespace Chess
         }
 
         // SUB FUNC
-        //
-
+        
         // Output auto sroll
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -354,21 +349,17 @@ namespace Chess
         }
 
         //Move Form
-
         bool dragging;
         Point offset;
-
         private void MainForm_MouseDown(object sender, MouseEventArgs e)
         {
             dragging = true;
             offset = e.Location;
         }
-
         private void MainForm_MouseUp(object sender, MouseEventArgs e)
         {
             dragging = false;
         }
-
         private void MainForm_MouseMove(object sender, MouseEventArgs e)
         {
             if (dragging)
@@ -382,22 +373,5 @@ namespace Chess
             }
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Screen_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (table == null)
-                return;
-            table.Show();
-            OnUnitDestroly(null);
-        }
     }
 }
