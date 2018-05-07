@@ -178,7 +178,7 @@
             this.PlayerOneSakkL.AutoSize = true;
             this.PlayerOneSakkL.Font = new System.Drawing.Font("Arial Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.PlayerOneSakkL.ForeColor = System.Drawing.Color.Black;
-            this.PlayerOneSakkL.Location = new System.Drawing.Point(322, 170);
+            this.PlayerOneSakkL.Location = new System.Drawing.Point(332, 150);
             this.PlayerOneSakkL.Name = "PlayerOneSakkL";
             this.PlayerOneSakkL.Size = new System.Drawing.Size(64, 22);
             this.PlayerOneSakkL.TabIndex = 11;
@@ -232,7 +232,7 @@
             this.PlayerTwoSakkL.AutoSize = true;
             this.PlayerTwoSakkL.Font = new System.Drawing.Font("Arial Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.PlayerTwoSakkL.ForeColor = System.Drawing.Color.Black;
-            this.PlayerTwoSakkL.Location = new System.Drawing.Point(322, 297);
+            this.PlayerTwoSakkL.Location = new System.Drawing.Point(332, 280);
             this.PlayerTwoSakkL.Name = "PlayerTwoSakkL";
             this.PlayerTwoSakkL.Size = new System.Drawing.Size(64, 22);
             this.PlayerTwoSakkL.TabIndex = 14;
@@ -305,10 +305,12 @@
             // 
             // StatusBAR
             // 
+            this.StatusBAR.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.StatusBAR.BackColor = System.Drawing.Color.White;
             this.StatusBAR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.StatusBAR.Cursor = System.Windows.Forms.Cursors.Hand;
             this.StatusBAR.Font = new System.Drawing.Font("Candara", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.StatusBAR.ForeColor = System.Drawing.Color.Black;
             this.StatusBAR.Location = new System.Drawing.Point(9, 302);
             this.StatusBAR.MaxLength = 20;
             this.StatusBAR.Name = "StatusBAR";
@@ -316,8 +318,9 @@
             this.StatusBAR.Size = new System.Drawing.Size(20, 18);
             this.StatusBAR.TabIndex = 23;
             this.StatusBAR.TabStop = false;
-            this.StatusBAR.Text = "()";
+            this.StatusBAR.Text = " (O)";
             this.StatusBAR.WordWrap = false;
+            this.StatusBAR.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StatusBAR_MouseDown);
             // 
             // MainForm
             // 

@@ -10,23 +10,13 @@ namespace Chess
     public delegate void UnitDestroly(Unit a);
     public delegate void SakkFor(Player a);
 
-    //TODO
-
-    // 1.5
-    // Sakk algoritmis hiba || Dupla király bug
-    // Hang
-    // Időzítő
-
-
-    //
-
     public partial class MainForm : Form
     {
         //Developement tools
 
-            // ||  http://localhost  ||  http://donixdev.esy.es || //
+        // ||  http://localhost  ||  http://donixdev.esy.es || //
 
-        public const string version = "1.4.1";
+        public const string version = "1.5";
         public const string subfiles = @"Pieces\";
         public const bool IsDev = false;
         public const bool AutoLogin = IsDev && true;
@@ -45,6 +35,7 @@ namespace Chess
         public SakkFor sakkfor;
         public ResetGame resetgame;
         public GEndForm endform;
+        public Audio audio;
         Client kliens;
 
         public FindMatch findmatch;
@@ -75,9 +66,6 @@ namespace Chess
             this.Opacity = 0;
             nameinput = new Chess.NameInput(this);
             nameinput.Show();
-
-
-
         }
 
         //LOAD PALYER
@@ -87,6 +75,7 @@ namespace Chess
             this.Opacity = 100;
 
             kliens = new Client(PlayerOne, getplayermove, findmatch, richTextBox1, resetgame, this);
+            audio = new Audio();
         }
 
 
@@ -116,7 +105,7 @@ namespace Chess
         {
             //if endgame
             if (table != null)
-                if (!(table.turn >-1))
+                if (!(table.turn > -1))
                     return;
 
             if (!selected)
@@ -126,7 +115,7 @@ namespace Chess
 
                 if ((y > 8 && y < 0) && (x > 8 && x < 0))
                     return;
-               
+
                 if (table != null)
                     if (table.ShowPredictions(x, y))
                         selected = true;
@@ -139,11 +128,12 @@ namespace Chess
                     if (table.turn % 2 == table.players.FindIndex((a) => PlayerOne == a))
                     {
                         int a = table.turn;
+                        while (!kliens.Move(x, y, str, a)) ;
                         OppMove(x, y, str, a);
-                        while(!kliens.Move(x, y, str, a));
                     }
 
-                table.Show();
+                if(table != null)
+                    table.Show();
                 selected = false;
             }
         }
@@ -165,7 +155,7 @@ namespace Chess
                 int val = kliens.GameEnd(PlayerOne, table.players.Find((v) => v.Name != PlayerOne.Name));
                 endform.Win(val);
             }
-            
+
 
             //Reset: Game
             table = null;
@@ -192,7 +182,7 @@ namespace Chess
             c = null;
 
         }
-           
+
         //Write out player names
         void SetUpPlayerNamesAndTable()
         {
@@ -213,7 +203,7 @@ namespace Chess
             //SetUp: Table
             POUPG = PlayerOneUnitsP.CreateGraphics();
             PTUPG = PlayerTwoUnitsP.CreateGraphics();
-            Graphics[] c = {PTUPG, POUPG};
+            Graphics[] c = { PTUPG, POUPG };
 
             foreach (Graphics u in c)
                 u.DrawRectangle(Pens.Black, 0, 0, 130, 26);
@@ -226,8 +216,8 @@ namespace Chess
             WebClient a = new WebClient();
             string[] str = new string[2];
             for (int i = 0; i < 2; i++)
-                try {str[i] = a.DownloadString(Client.shost + "type=0&name=" + table.players[i].Name); } catch (Exception) { return; }
-           
+                try { str[i] = a.DownloadString(Client.shost + "type=0&name=" + table.players[i].Name); } catch (Exception) { return; }
+
             //Setlabels
             PlayerOneELOLabel.Invoke((MethodInvoker)(() => PlayerOneELOLabel.Text = str[0].Split(':')[2]));
             PlayerTwoELOLabel.Invoke((MethodInvoker)(() => PlayerTwoELOLabel.Text = str[1].Split(':')[2]));
@@ -242,9 +232,9 @@ namespace Chess
             List<string> split = new List<string>(ranks.Split('/'));
             int[] s = new int[2];
             for (int i = 0; i < 2; i++)
-                s[i] = split.FindIndex((v) => v.Split(':')[0] == table.players[i].Name)+1;
-            PlayerOneELORankLabel.Invoke((MethodInvoker)(() => PlayerOneELORankLabel.Text = (s[0]!=0)? "|#" + s[0].ToString() + "|" : "" ));
-            PlayerTwoELORankLabel.Invoke((MethodInvoker)(() => PlayerTwoELORankLabel.Text = (s[1]!=0)? "|#" + s[1].ToString() + "|" : ""));
+                s[i] = split.FindIndex((v) => v.Split(':')[0] == table.players[i].Name) + 1;
+            PlayerOneELORankLabel.Invoke((MethodInvoker)(() => PlayerOneELORankLabel.Text = (s[0] != 0) ? "|#" + s[0].ToString() + "|" : ""));
+            PlayerTwoELORankLabel.Invoke((MethodInvoker)(() => PlayerTwoELORankLabel.Text = (s[1] != 0) ? "|#" + s[1].ToString() + "|" : ""));
             return;
         }
 
@@ -254,9 +244,9 @@ namespace Chess
             Font WriteOutFont = new Font(FontFamily.GenericMonospace, 10);
             if (a != null)
                 if (PlayerOne == a.player)
-                    PlayerOneUnits[table.GetIDByUnit(a)-1]++;
+                    PlayerOneUnits[table.GetIDByUnit(a) - 1]++;
                 else
-                    PlayerTwoUnits[table.GetIDByUnit(a)-1]++;
+                    PlayerTwoUnits[table.GetIDByUnit(a) - 1]++;
 
 
             for (int i = 0; i < PlayerOneUnits.Length; i++)
@@ -267,7 +257,7 @@ namespace Chess
 
             for (int i = 0; i < PlayerTwoUnits.Length; i++)
             {
-                PTUPG.DrawImage(table.figures[i+6], (i * 26) + 1, 1);
+                PTUPG.DrawImage(table.figures[i + 6], (i * 26) + 1, 1);
                 PTUPG.DrawString(PlayerTwoUnits[i].ToString(), WriteOutFont, Brushes.White, (i * 26) + 1 + 7, 1 + 11);
             }
 
@@ -295,14 +285,12 @@ namespace Chess
                 return;
 
             //Create Game
-            if(b == 1)
+            if (b == 1)
                 table = new Table(graphics, PlayerOne, a, richTextBox1, unitdestroly, sakkfor, resetgame);
             if (b == 2)
                 table = new Table(graphics, a, PlayerOne, richTextBox1, unitdestroly, sakkfor, resetgame);
 
-            richTextBox1.Invoke((MethodInvoker)(() => richTextBox1.Text += "|C| Match found : | " + PlayerOne.Name + " | vs | " + a.Name +  " |"));
-
-
+            richTextBox1.Invoke((MethodInvoker)(() => richTextBox1.Text += "|C| Match found : | " + PlayerOne.Name + " | vs | " + a.Name + " |"));
 
             //SetupGame
             SetUpPlayerNamesAndTable();
@@ -311,6 +299,9 @@ namespace Chess
             PlayerOneUnits = new int[5];
             PlayerTwoUnits = new int[5];
             OnUnitDestroly(null);
+
+            //Play Sound
+            audio.StartGame();
         }
 
         //Opp Move
@@ -324,13 +315,13 @@ namespace Chess
                 int str = table.turn % 2;
                 int str2 = table.turn;
 
-                try { table.Move(x, y, a, table.players[str]); }
+                try { if(table.Move(x, y, a, table.players[str])) audio.Move();}
                 catch (Exception) { if (table != null) table.turn = str2; }
             }
         }
 
         // SUB FUNC
-        
+
         // Output auto sroll
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -345,7 +336,7 @@ namespace Chess
             {
                 if (u != "")
                     richTextBox1.Text += u + Environment.NewLine;
-            }); 
+            });
         }
 
         //Move Form
@@ -365,11 +356,21 @@ namespace Chess
             if (dragging)
             {
                 Point currentScreenPos = PointToScreen(e.Location);
-                Location = new Point(currentScreenPos.X - offset.X,currentScreenPos.Y - offset.Y);
+                Location = new Point(currentScreenPos.X - offset.X, currentScreenPos.Y - offset.Y);
 
                 if (endform.Enabled == true)
                     endform.SetPosition();
-                
+
+            }
+        }
+
+        //Panel reset if game avialbe
+        private void StatusBAR_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (table != null)
+            {
+                table.Show();
+                OnUnitDestroly(null);
             }
         }
 

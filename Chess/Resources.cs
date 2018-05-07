@@ -78,6 +78,8 @@ namespace Chess
             //Update
             //Refresh start.txt
             DownloadFile("start.txt", "start.txt");
+            DownloadFile("move.wav", "move.wav");
+            DownloadFile("startgame.wav", "startgame.wav");
 
             //Getlocal pieces
             string localcodes = File.ReadAllText(localpath + "b.down");
@@ -98,8 +100,8 @@ namespace Chess
             for (int i = 0; i < 6; i++)
                 if (piecescode[i] != localcodes[i])
                 {
-                    DownloadFile(t.Find((v) => v.type == i && v.variant == int.Parse(piecescode[0].ToString())).w_src + ".png", team[0] + name[i] + ".png");
-                    DownloadFile(t.Find((v) => v.type == i && v.variant == int.Parse(piecescode[0].ToString())).b_src + ".png", team[1] + name[i] + ".png");
+                    DownloadFile(t.Find((v) => v.type == i && v.variant == int.Parse(piecescode[i].ToString())).w_src + ".png", team[0] + name[i] + ".png");
+                    DownloadFile(t.Find((v) => v.type == i && v.variant == int.Parse(piecescode[i].ToString())).b_src + ".png", team[1] + name[i] + ".png");
                 }
             File.WriteAllText(localpath + "b.down", piecescode);
 
