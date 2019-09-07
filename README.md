@@ -1,3 +1,3 @@
 # Chess
-Simple chess game, with online lobby system
-by: donix 
+School project.
+Mar 17, 2018
